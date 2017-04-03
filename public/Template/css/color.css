@@ -1,0 +1,313 @@
+.btn-theme.btn-date,
+.news-event-slider .item .foot a,
+#header,
+.testimonials .head-section .border-title:after,
+.products-btns a.btn-buy-now,
+.content form fieldset .cart-foot .cart-total .cart-btns button.btn-checkout,
+.content form fieldset .btn-placeorder,
+.social-area li .icon:hover,
+.team .member-foot .btn-member{background:#f44029;}
+.btn-theme.btn-date i,
+.news-event-slider .item .foot i,
+.content form fieldset .cart-foot .cart-total .cart-btns button.btn-checkout i,
+.content form fieldset .btn-placeorder i,
+.products-btns a.btn-buy-now i,
+#header .topbar{background:#ff513b;}
+#nav .navbar-collapse ul li ul li ul,
+#nav .navbar-collapse ul > li > ul,
+.banner-slider .heading-area:before,
+.gallery-section,
+.our-sponsors,
+.social-area li .icon,
+.newsletter .modal-content,
+#nav{ background:#fff;}
+form.form-search input[type="text"]{background:#e6e6e6;}
+form.form-search button[type="submit"]{color:#a6a6a6;}
+.three-columns .border-title strong,
+.three-columns .athlete-naem,
+.latest-race .race-area .date,
+.gallery-section h2,
+#nav .navbar-collapse ul li a,
+.table-responsive .table thead,
+.table-responsive .table tbody tr td:first-child,
+.modal-dialog .product a.btn-moredetail,
+#comment ul li .comment-meta .reply-date span .fa,
+#comment ul li .comment-meta .author-details strong,
+.content h2,
+#comment h3,
+#comment-form h3,
+.event .accordion-head > div h3,
+.my-account strong.title a,
+.widget ul li label:hover a,
+span.product-price,
+.product-size ul li.l a,
+.product-size ul li.xl a,
+.benefits ul li i.icon
+.size-guide a:focus,
+.testimonial-slider strong.client-name,
+.testimonials .head-section .border-title,
+.testimonials .head-section .border-title h3,
+.contact-info a:hover,
+.about-author .author-meta .author-details strong,
+.more-articles > h2,
+span.product-price,
+.content .login-form.creataccount-form h2,
+.post:hover h2 a,
+.size-guide a:hover{color:#f44029;}
+.banner-slider,
+.banner-slider .heading-area .date,
+.news-event-section h2,
+.news-event-section,
+.news-event-slider .item .foot a,
+.news-event-slider .item .foot i,
+.competitor-section h2,
+.competitor-section h2 strong,
+.competitor-form,
+.contact-info a,
+.banner-slider h1,
+.post.single .post-meta li,
+.post.single .post-meta li em,
+.post.single .post-meta li a,
+.post.single .post-meta li a:after,
+button.close:hover,
+button.close:focus,
+button.close,
+.social-area li .icon:hover
+.social-area li .icon i,
+.contact-info h2,
+.page-heading h1,
+.team .member-foot .btn-member,
+table.cart-table thead,
+.social-area li .icon:hover i,
+.social-area li .icon:hover,
+button.close span{color:#fff;}
+.welcome-area{
+	background: #fff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 26%, #fdfdfd 33%, #e5e5e5 81%, #dfdfdf 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(26%,#ffffff), color-stop(33%,#fdfdfd), color-stop(81%,#e5e5e5), color-stop(100%,#dfdfdf));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 26%,#fdfdfd 33%,#e5e5e5 81%,#dfdfdf 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 26%,#fdfdfd 33%,#e5e5e5 81%,#dfdfdf 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 26%,#fdfdfd 33%,#e5e5e5 81%,#dfdfdf 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 26%,#fdfdfd 33%,#e5e5e5 81%,#dfdfdf 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dfdfdf',GradientType=0 );
+}
+
+.event .accordion-head > div span,
+.three-columns h3,
+.testimonial-slider .item,
+.testimonial-slider .item i,
+.team .member-foot,
+span.product-name,
+.product-description h2,
+.product-description .description p span:first-child,
+.product-color strong.label,
+.shipping-discount span i,
+.modal-dialog .product .product-form,
+.care h3,
+.related-product h3,
+.product-features h3,
+.shipping-discount span em,
+.product-size ul li.xxl a,
+.product-size strong.label,
+#sidebar h3,
+.content .login-form h2,
+#sidebar h4{color:#484848;}
+#sidebar,
+.shop-head ul li a,
+.shop-head ul li a:hover,
+.welcome-area h2,
+.three-columns .description,
+.latest-race .race-area .venue,
+.latest-race .race-area .description,
+.welcome-area span.subtitle,
+.testimonial-slider .description,
+.post.single .description,
+.about-author .author-description,
+#comment ul li .author-description,
+.post.single .description blockquote,
+.blog-post .post,
+.trithlon-history .description{color:#494949;}
+.content form fieldset .cart-foot .coupon .btn-apply,
+.login-form .btn-back,
+.my-account .btn-edit,
+.product .btn-addtocart
+.products-btns a.btn-wishlist,
+#gallery-cats li a.btn-theme i,
+#gallery-cats li a.btn-theme{color:#787878;}
+.post .post-meta li a:after,
+.post .post-meta li{color:#969696;}
+.competitor-form input[type="email"],
+.competitor-form input[type="text"],
+.competitor-form textarea{border:2px solid #ffc75c;}
+.competitor-section .border-title{border-color:#ffc75c;}
+#sidebar h4{background:#e2e2e2;}
+.latest-race{background:#e2e2e2;}
+.our-sponsors .border-title,
+.latest-race .race-area .border-title{border-color:#d2d2d2;}
+.our-sponsors .border-title:after,
+.latest-race .race-area .border-title:after{ background:#d2d2d2;}
+.gallery-section:after{border-top: 40px solid #fff;}
+.content form fieldset .cart-foot .coupon .btn-apply,
+.login-form .btn-back,
+.my-account .btn-edit,
+.content form fieldset .cart-foot .coupon .btn-apply,
+.login-form .btn-back,
+.my-account .btn-edit,
+.product .btn-addtocart,
+.shipping-discount span i
+.products-btns a.btn-wishlist,
+#gallery-cats li a.btn-theme{background:#dfdfdf;}
+.newsletter-form button[type="submit"] i,
+.content form fieldset .cart-foot .coupon .btn-apply i,
+.login-form .btn-back i,
+.my-account .btn-edit i,
+.products-btns a.btn-wishlist i,
+.product .btn-addtocart i,
+#gallery-cats li a.btn-theme i{background:#cbcbcb;}
+#gallery-cats li.select a.btn-theme i,
+#gallery-cats li a.btn-theme:hover i{background:#5d5d5d;}
+.competitor-section,
+.news-event-section,
+.page-heading,
+.social-area li .icon:hover i,
+.social-area li .icon i,
+.banner-slider{background-color:#fdb62d;}
+.competitor-section .border-title:after{ background:#ffc75c;}
+table.cart-table tbody td[data-title="Stock Status"]{ color:#fdb62d;}
+.social-area li .icon{ color:#fdb62d;}
+.social-area li .icon i{color:#fff;}
+.content form fieldset select:focus,
+.content form fieldset textarea:focus,
+.content form fieldset input[type="text"]:focus,
+.content form fieldset input[type="email"]:focus{ border-color:#fdb62d;}
+.competitor-form input[type="email"],
+.competitor-form input[type="text"],
+.competitor-form textarea{color:#fff !important;}
+.competitor-form .form-control::-moz-placeholder{ color:rgba(255,255,255,0.7) !important;}
+#footer .container-fluid{background:#2a2a2a;}
+#footer .btn-backtotop{color:#616161;}
+#footer .bottom-strip,
+#footer .footer p{color:#6b6b6b;}
+.newsletter-form input[type="email"]:focus,
+.product-size ul li.l a,
+.product-size ul li.xl a,
+.testimonials .head-section .border-title{border-color:#f44029;}
+.benefits ul li i.icon{
+	border:2px solid #f44029;
+	color:#f44029;
+}
+.newsletter-form input[type="email"]{border-bottom:2px solid #3e3e3e;}
+.page-heading h1{text-shadow: 1px 1px 1px #9C9C9C;}
+.team{background:#ededed;}
+.contact-info address,
+.contact-info strong.email,
+.contact-info .number{
+	color:#fefefe;
+	border-bottom:2px solid #ffc75c;
+}
+.contact-info .number{ border:0;}
+.contact-info address:after,
+.contact-info strong.email:after{background:#ffc75c;}
+.event .accordion-head:focus ul li,
+.event .accordion-head:hover ul li{ color:#000;}
+.event .accordion-head .unavailable span.notice{color:#dfdfdf;}
+.event .accordion-head > div h3{border-bottom:2px solid #dcdcdc;}
+.event .accordion-head > div ul li + li{border-left:1px solid #3d3d3d;}
+.post .post-meta li a,
+.post h2,
+.post h2 a,
+.event .accordion-head > div ul li a,
+.table.theme-table thead tr th strong,
+.event .table.theme-table thead tr th strong,
+/*.content form fieldset span,*/
+.content form fieldset label,
+.my-account strong.title,
+.post.single h2{color:#3d3d3d;}
+.newsletter .content-box .btn-getstarted,
+.modal-dialog .product .btn-addtocart,
+table.cart-table thead{background:#3d3d3d;}
+.post.single span.date{color:#9f9f9f;}
+.post-comments .about-author{background:#f6f6f6;}
+.about-author h4:after{background:#e4e4e4;}
+#comment-form form fieldset textarea,
+#comment-form form fieldset input{border:1px solid #e4e4e4;}
+.content form fieldset input[type="password"],
+.content form fieldset select,
+.content form fieldset textarea,
+.content form fieldset input[type="text"],
+.content form fieldset input[type="email"]{border:2px solid #e4e4e4;}
+.more-articles > h2,
+#comment h3{border-bottom:2px solid #e6e6e6;}
+#comment ul li,
+#comment ul li ul li{border-top:1px solid #e6e6e6 !important;}
+.about-author .author-meta .author-details span,
+#comment ul li .comment-meta .author-details span,
+#comment ul li .comment-meta .reply-date{color:#838383;}
+.order-total,
+table.cart-table tbody tr{ border-bottom:1px solid #f0f0f0;}
+.payment-method ul li,
+.order-total{border-top:1px solid #f0f0f0;}
+.events .event{background:#eaeaea;}
+table.cart-table tbody td img{border:2px solid #eaeaea;}
+.content form fieldset table.cart-table tbody td .quantity-sapn{border:1px solid #e7e7e7;}
+.content .login-form span{color:#767676;}
+.btn-forgotpassword,
+.note{color:#9b9b9b;}
+.shop-head-filter{border-bottom:2px solid #f2f2f2;}
+.shop-head ul li{border-left:1px solid #494949;}
+#sync2 .item,
+#sync1,
+.product{border:2px solid #e9e9e9;}
+.product:hover,
+#sync2 .owl-item.synced .item{ border-color:#b3b3b3;}
+.shipping-discount span i{color:#b3b3b3;}
+.product-description .description p span{color:#b1abab;}
+.product-size ul li a{
+	border:2px solid #d3d3d3;
+	color:#d3d3d3;
+}
+.product-size ul li.xxl a{border-color:#484848;}
+.product-color ul li a{background:#5c9acd;}
+.product-color ul li:nth-child(2) a{background:#c249a6;}
+.product-color ul li:nth-child(3) a{background:#9db543;}
+.care h3,
+.related-product h3,
+.product-features h3{border-bottom:2px solid #ebebeb;}
+.benefits ul li:after{background:#ebebeb;}
+.instructions-icons i{
+	color:#cdcdcd;
+	border:2px solid #cdcdcd;
+}
+.technical i{color:#c6c6c6;}
+.newsletter .content-box form.newsletter-form input[type="email"]{border:2px solid #d8d8d8;}
+.newsletter .content-box .btn-getstarted{border:4px solid #6a6a6a;}
+.newsletter .content-box .btn-getstarted i{background:#6a6a6a;}
+button.close:hover,
+button.close:focus,
+button.close{border:1px solid #fff;}
+.modal-dialog .product-code{color:#a29b9a;}
+.modal-dialog .product .btn-addtocart i{background:#646464;}
+.modal-dialog .product .btn-addtocart,
+.modal-dialog .product .btn-addtocart i{color:#919191;}
+.table-responsive .table thead{background:#f1f1f1;}
+/*** Button Style ***/
+.btn-theme.red{background:#f44029;}
+.btn-theme.red span.round{background:#ff513b;}
+.btn-theme.black{background:#484848;}
+.btn-theme.black span.round{background:#5d5d5d;}
+.shipping-discount span i,
+.btn-theme.white{ background:#dfdfdf;}
+.btn-theme.white span.round{ background:#cbcbcb;}
+.btn-theme.black,
+#gallery-cats li.select .btn-theme,
+.btn-theme.red{ color:#fff;}
+#gallery-cats li .btn-theme:hover .round,
+#gallery-cats li.select .btn-theme .round{ background:#5d5d5d;}
+#gallery-cats li .btn-theme:hover .round i,
+.btn-theme.white:hover span.round i,
+#gallery-cats li.select .btn-theme .round i{background:rgba(255,255,255,0.5);}
+.btn-theme.white span.round,
+#gallery-cats li .btn-theme .round{background:#cbcbcb;}
+#nav ul li a:before{ color:#fdb62d;}
+
+
