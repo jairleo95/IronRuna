@@ -44,6 +44,14 @@ class LoginController extends Controller
             return DB::select('select * from userData where userName = ?  and userPassword=?', [$user,$pass]);
 
     }
+    public function testQuery(){
+         $users = DB::table('userData')->get();
+       //  dd($users);
+          return response()->json([
+            'data' => $users
+
+        ]);
+    }
     public function findUserDataByUserName($user){
         return DB::select('select * from userData where userName = ? ', [$user]);
     }

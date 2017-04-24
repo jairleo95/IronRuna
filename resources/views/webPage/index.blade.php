@@ -85,7 +85,7 @@
             <div class="description">
                 <p>Para ser un campeón, creo que tienes que ver el panorama general. No se trata de ganar o perder; Se trata de cada día de trabajo duro y de prosperar en un desafío. Se trata de abrazar el dolor que experimentará al final de una carrera y no tener miedo. Creo que la gente piensa demasiado y tiene miedo de un desafío.</p>
             </div>
-            <a href="#" class="btn-theme black" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <a href="inscription" class="btn-theme black" >
                 <span class="">Inscribirse</span>
                 <span class="round">
                     <i class="fa fa-send"  ></i>

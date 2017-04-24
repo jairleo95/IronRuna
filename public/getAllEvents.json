@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "idEvent": 1,
+      "idEventType": 1,
+      "tittle": "Perú 2017 Lima - Half Iron Runa",
+      "shortTittle": "Costa Verde, LimaHalf Triathlon",
+      "initDate": "2017-07-06",
+      "finishDate": "2017-07-06",
+ 	  "locale" :"Costa verde, Lima Perú",
+      "emailContact": "informes@ironruna.com",
+      "phoneContact": "+51 951 917 445",
+      "description": "Los 1900 mt de natación se desarrollaran en las aguas de Playa de Agua Dulce del Océano Pacífico, con condiciones de marea muy tranquilas. Los 90 km del sector de ciclismo se desarrollarán a lo largo de la Costa Verde, sobre un circuito plano y muy rápido en su mayor porcentaje.",
+      "quota": 400,
+      "aditionalData": "Categorías: INDIVIDUAL Y POSTAS",
+      "postEvent": "2017-04-06",
+      "recordStatus": 1,
+      "eventStatus": "1",
+      "created_at": null,
+      "updated_at": null
+    }
+  ]
+}

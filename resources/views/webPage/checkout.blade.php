@@ -8,7 +8,6 @@
 				</div>
 			</div>
 		</section>
-
 		<!-- Heading End -->
 		<div class="container content">
 			<div class="row">
@@ -23,7 +22,6 @@
 									<th>Precio Unitario</th>
 									<th>Cantidad</th>
 									<th>Total</th>
-
 								</tr>
 							</thead>
 							<tbody>
@@ -40,9 +38,9 @@
 										<span>Venta Individuales</span>
 									</td>
 									</td>
-									<td>$124.99</td>
+									<td>S/.124.99</td>
 									<td><input type="text" class="form-control spinner" name="quantity" value="1"/></td>
-									<td data-title="Total">$124.99</td>
+									<td data-title="Total">S/.124.99</td>
 								</tr>
 								<tr>
 									<td>
@@ -56,27 +54,27 @@
 										<i class="fa fa-users fa-2x"></i>
 										<span>Venta Equipos (Postas)</span>
 									</td>
-									<td data-title="Unit Price">$124.99</td>
+									<td data-title="Unit Price">S/.124.99</td>
 									<td>
 										<input type="text" name="quantity"   value="1" class="form-control spinner"/>
 									</td>
-									<td data-title="Total">$124.99</td>
+									<td data-title="Total">S/.124.99</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="cart-foot row">
 								<div class="col-sm-6">
- <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+ 						<p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
 
 								</div>
 								<div class="col-sm-6 cart-total">
 									<div class="cart-subtotal">
 										<span>Subtotal</span>
-										<span>$369.97</span>
+										<span>S/.369.97</span>
 									</div>
 									<div class="order-total">
 										<strong>Total del pedido</strong>
-										<strong>$369.97</strong>
+										<strong>S/.369.97</strong>
 									</div>
 									<button class="btn btn-success pull-right" type="submit">
 										<i class="fa fa-send"></i>
@@ -89,6 +87,7 @@
 				</form>
 			</div>
 		</div>
+			<input type="text" class="eventSelected" value="{{ session('eventSelected')}}" >
 		@endsection
 @section('scripts')
     <script>
@@ -98,5 +97,35 @@
 			down: "ui-icon-triangle-1-s",
 			up: "ui-icon-triangle-1-n"
         });
+
+        function getCostByIdData(event,callback){
+			$.ajax({
+						url:'getCostByEvent',
+						type:'GET',
+						data:{
+							'id':event
+						},
+						success:function(data){
+								callback(data);
+						}
+			});
+		}
+		function buildTicket(tableTicketDetails,eventSelected){
+            tableTicketDetails.empty();
+            getCostByIdData(eventSelected,function(data){
+                var htmlString = '';
+                if (data.status){
+                    var list = data.list;
+                    for (  var i =0; i<list.lenght;i++){
+					console(list[i].value);
+                    }
+				} else{
+                    console('something was wrong');
+				}
+			});
+		}
+        var tableTicketDetails=$('tableTicketDetails');
+        var event =$('.eventSelected').val();
+        buildTicket(tableTicketDetails,event);
     </script>
     @endsection

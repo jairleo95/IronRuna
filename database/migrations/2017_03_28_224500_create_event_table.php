@@ -20,6 +20,7 @@ class CreateEventTable extends Migration
             $table->string('shortTittle',50);
             $table->date('initDate');
             $table->date('finishDate');
+            $table->string('locale',100);
             $table->string('emailContact',100);
             $table->string('phoneContact',100);
             $table->string('description',500);

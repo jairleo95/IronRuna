@@ -11,12 +11,18 @@
 |
 */
 
-
+/**test routes*/
 Route::get('test', function () {
     $data = Session::all();
     //Session::save();
     dd($data);
 });
+Route::get('testQuery','Auth\LoginController@testQuery');
+
+/**end test routes*/
+
+Route::get('getAllPostedEvtens','EventController@getAllEvent');
+
 Route::get('main',['as' => 'main', 'uses' => 'Auth\AuthController@home']);
 
 Route::get('message', function () {
@@ -130,9 +136,13 @@ Route::get('about-us', function () {
 Route::get('information', function () {
     return view('webPage.information');
 });
-Route::get('checkout', function () {
-    return view('webPage.checkout');
-});
+
+Route::get('checkout', [
+    'uses'=>'PayController@getCheckoutPage',
+    'as'=>'checkout'
+]);
+Route::get('checkout/{id}', 'PayController@checkoutAccess');
+Route::get('getCostByEvent','CostController@costByEvent');
 Route::get('my-account', function () {
     return view('webPage.my-account');
 });
