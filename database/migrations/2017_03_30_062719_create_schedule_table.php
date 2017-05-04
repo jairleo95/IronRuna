@@ -13,7 +13,7 @@ class CreateScheduleTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedule', function (Blueprint $table) {
+        Schema::create('scheduleTime', function (Blueprint $table) {
             $table->increments('idSchedule');
             $table->integer('idEvent')->unsigned();
             $table->date('initDate');
@@ -32,6 +32,6 @@ class CreateScheduleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedule');
+        Schema::dropIfExists('scheduleTime');
     }
 }

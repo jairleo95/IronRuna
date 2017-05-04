@@ -32,6 +32,8 @@ $(document).ready(function () {
         $('html,body').animate({scrollTop: 0}, 'slow');
         return false;
     });
+
+
     /* -------------------------------------
      Shopping Cart Prodict Increase		
      -------------------------------------- */
@@ -45,8 +47,19 @@ $(document).ready(function () {
      Theme All Sliders			
      -------------------------------------- */
     console.log('::init owlCarousel2')
-
-
+ 
+ $('.sponsors-small-slider').owlCarousel({
+      animateOut: 'slideOutDown',
+        animateIn: 'flipInX',
+        items:15,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoHeight: true, 
+       
+        
+    });
 
     $('.mainCarousel').owlCarousel({
         animateOut: 'slideOutDown',
@@ -55,7 +68,7 @@ $(document).ready(function () {
         loop:true,
         margin:10,
         autoplay:true,
-        autoplayTimeout:2000,
+        autoplayTimeout:5000,
         autoHeight: true,
 
     });
@@ -84,16 +97,7 @@ $(document).ready(function () {
  });
 
 
-
-/*
-    $("#race-slider").owlCarousel({
-        autoPlay: false,
-        items: 2,
-        navigation: true,
-        itemsDesktop: [1199, 2],
-        itemsDesktopSmall: [979, 2],
-        pagination: false,
-    });*/
+ 
 
     $(".news-event-slider").owlCarousel({
         autoPlay: false,

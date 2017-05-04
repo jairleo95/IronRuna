@@ -14,6 +14,7 @@ class MailController extends Controller
         return \View::make('contact');
     }
     public function send(Request $request){
+       // ini_set('max_execution_time', 300);
         //guarda el valor de los campos enviados desde el form en un array
         $data = $request->all();
         //se envia el array y la vista lo recibe en llaves individuales {{ $email }} , {{ $subject }}...
@@ -23,18 +24,18 @@ class MailController extends Controller
                                 //asunto
                                 $message->subject('Iron Runa - Contacto con usuario');
                                 //receptor
-                                $message->to(env('CONTACT_MAIL'), env('CONTACT_NAME'));
+                                $message->to(env('MAIL_USERNAME'), env('MAIL_NAME'));
                     });
                 return \View::make('succ');
     }
     public static function sendConfirmationSubscriber( array $dataEmail){
                     \Mail::send('emails.subscriber.message', $dataEmail, function($message) use ($dataEmail){
                                 //remitente
-                                $message->from($dataEmail['email'], $dataEmail['name']);
+                                $message->from(env('MAIL_USERNAME'), $dataEmail['name']);
                                 //asunto
                                 $message->subject($dataEmail['subject']);
                                 //receptor
-                                $message->to(env('CONTACT_MAIL'), env('CONTACT_NAME'));
+                                $message->to($dataEmail['email'], env('MAIL_NAME'));
                     });
                 return \View::make('emails.subscriber.successSubscriber');
     }

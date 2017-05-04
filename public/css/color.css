@@ -178,7 +178,16 @@ span.product-name,
 .page-heading,
 .social-area li .icon:hover i,
 .social-area li .icon i,
-.banner-slider{background-color:#fdb62d;}
+.banner-slider{
+	background-color:#fdb62d;
+	
+/*	background-color: #22262e;
+
+background-color:#688F9E
+
+*/
+
+}
 .competitor-section .border-title:after{ background:#ffc75c;}
 table.cart-table tbody td[data-title="Stock Status"]{ color:#fdb62d;}
 .social-area li .icon{ color:#fdb62d;}
@@ -194,9 +203,17 @@ table.cart-table tbody td[data-title="Stock Status"]{ color:#fdb62d;}
 /*
 .competitor-form .form-control::-moz-placeholder{ color:rgba(255,255,255,0.7) !important;}*/
 #footer .container-fluid{background:#2a2a2a;}
-#footer .btn-backtotop{color:#616161;}
+#footer .btn-backtotop{
+	color:#616161;
+	
+
+}
+
+
 #footer .bottom-strip,
-#footer .footer p{color:#6b6b6b;}
+#footer .footer p{
+	color:white;
+}
 .newsletter-form input[type="email"]:focus,
 .product-size ul li.l a,
 .product-size ul li.xl a,

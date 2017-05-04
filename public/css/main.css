@@ -70,6 +70,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000; }
 		float:left;
 		width:100%;
 	}
+
+
+
 	.dropdown{ float:left;}
 	.btn-dropdown{
 		float:left;
@@ -1224,7 +1227,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000; }
 		padding:40px 0 0;
 		background:url(../images/arrow-top.png) no-repeat 50% 0;
 	}
-	#footer .footer{padding-top:80px;}
+
+
+	/*#footer .footer{padding-top:80px;}*/
 	#footer .footer p{
 		margin:0 0 50px;
 		text-align:center;
@@ -1267,13 +1272,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000; }
 	********************************/
 	.page-heading{
 		background:#fdb62d;
-		padding:10px 0;
+		padding:5px 0;
 		text-transform:capitalize;
 	}
 	.page-heading h1{
 		margin:0;
 		color:#fff;
-		font-size:35px;
+		font-size:30px;
 		line-height:40px;
 		font-weight:500;
 		text-shadow: 1px 1px 1px #9C9C9C;
@@ -1541,7 +1546,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000; }
 	/********************************
 			Events Page CSS
 	********************************/
-	.events{padding:70px 0;}
+	.events{padding:25px 0;}
 	.events .head-section{ width:265px;}
 	.events .event{
 		border:0;
@@ -3132,6 +3137,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000; }
 		position: fixed;
 		width: 100%;
 	}
+
+	
 		.btn-success.active, .btn-success:active, .btn-success:hover, .open>.btn-success.dropdown-toggle {
 			color: #fff;
 			background-color: #20895e;

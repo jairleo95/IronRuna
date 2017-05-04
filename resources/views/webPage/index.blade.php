@@ -1,14 +1,73 @@
 @extends('webPage.main')
 @section('content')
 <!-- Slider Start -->
+<section class="haslayout" style="padding-top:10px;padding-bottom: 10px;">
+  <div class="container">
+  <div class="row">
+        <div class="sponsors-small-slider owl-carousel owl-theme">
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-01.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-02.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-03.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-04.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-05.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-01.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-02.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-03.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-04.png" alt="image description">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <img src="images/sponsor-05.png" alt="image description">
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+    </div>
+</section>
 <section class="banner-slider haslayout">
     <div class="container">
         <div class="row">
             <div   class="mainCarousel owl-carousel owl-theme main-slider row">
                 <div class="item">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Lima Half Triathlon</h1>
+                            <h1>Half Iron Runa</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -24,9 +83,9 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Lima Half Triathlon</h1>
+                            <h1>Half Iron Runa</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -36,9 +95,9 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Lima Half Triathlon</h1>
+                            <h1>Half Iron Runa</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -48,9 +107,9 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Lima Half Triathlon</h1>
+                            <h1>Half Iron Runa</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -60,9 +119,9 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Lima Half Triathlon</h1>
+                            <h1>Half Iron Runa</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -82,7 +141,7 @@
         <div class="row">
             <h2>Bienvenido a Nuestra Triatlón</h2>
             <span class="subtitle">Sé que puedo vencer cualquier desafío</span>
-            <div class="description">
+            <div class="description text-justify">
                 <p>Para ser un campeón, creo que tienes que ver el panorama general. No se trata de ganar o perder; Se trata de cada día de trabajo duro y de prosperar en un desafío. Se trata de abrazar el dolor que experimentará al final de una carrera y no tener miedo. Creo que la gente piensa demasiado y tiene miedo de un desafío.</p>
             </div>
             <a href="inscription" class="btn-theme black" >
@@ -96,65 +155,7 @@
 </section>
 <!-- Welcome End -->
 <!-- Option Start -->
-<section class="option-section haslayout">
-    <div class="container">
-        <div class="row">
-            <div class="three-columns row">
-                <div class="col-sm-4"   >
-                    <div class="border-title">
-                        <strong>01</strong>
-                    </div>
-                    <i class="fa fa-star fa-5x  "></i>
-                    <h3>Atleta destacado</h3>
-                    <span class="athlete-naem">Paula Browns</span>
-                    <div class="description">
-                        <p>El éxito es el resultado de la perfección, el trabajo duro, el aprendizaje del fracaso, la lealtad y la persistencia.</p>
-                    </div>
-                    <a href="#" class="btn-theme black learn-more">
-                        <span class="txt">Ver Más</span>
-                        <span class="round">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </span>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <div class="border-title">
-                        <strong>02</strong>
-                    </div>
-                    <i class="fa fa-camera fa-5x"></i>
-                    <h3>Se buscan fotógrafos</h3>
-                    <span class="athlete-naem">NYC Tri Race Weekend</span>
-                    <div class="description">
-                        <p>Los apasionados a la cámara pueden tener una oportunidad única de ganarse la vida con su afición.</p>
-                    </div>
-                    <a href="#" class="btn-theme black learn-more">
-                        <span class="txt">Ver Más</span>
-                        <span class="round">
-                           <i class="fa fa-arrow-right"></i>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <div class="border-title">
-                        <strong>03</strong>
-                    </div>
-                    <i class="fa fa-hotel fa-5x"></i>
-                    <h3>Reserve su Hotel</h3>
-                    <span class="athlete-naem">¡Para el día del Triathlon!</span>
-                    <div class="description">
-                        <p>Success is the result of perfection, hard work, learning from failure, loyalty, and persistence.</p>
-                    </div>
-                    <a href="#" class="btn-theme black learn-more">
-                        <span class="txt">Ver Más</span>
-                        <span class="round">
-                                      <i class="fa fa-arrow-right"></i>
-                                    </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+ 
 <!-- Option End -->
 <!-- Latest Race Start -->
 <section class="latest-race haslayout">
@@ -168,46 +169,17 @@
                     <div id="race-slider" class="race-slider">
                         <div class="item">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <strong class="date">14/05</strong>
-                                <span class="venue">IRONMAN 70.3 Eagleman</span>
-                                <div class="description">
-                                    <p>Athletes rave about the temperate swim in the Choptank River and pastoral bike and run courses through rural Maryland.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <strong class="date">21/06</strong>
-                                <span class="venue">IRONMAN 70.3 Syracuse</span>
-                                <div class="description">
-                                    <p>Athletes rave about the temperate swim in the Choptank River and pastoral bike and run courses through rural Maryland.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <strong class="date">14/05</strong>
-                                <span class="venue">IRONMAN 70.3 Eagleman</span>
-                                <div class="description">
-                                    <p>Athletes rave about the temperate swim in the Choptank River and pastoral bike and run courses through rural Maryland.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <strong class="date">21/06</strong>
-                                <span class="venue">IRONMAN 70.3 Syracuse</span>
-                                <div class="description">
-                                    <p>Athletes rave about the temperate swim in the Choptank River and pastoral bike and run courses through rural Maryland.</p>
+                                <strong class="date">06/08</strong>
+                                <span class="venue">Half Iron Runa</span>
+                                <div class="description text-justify">
+                                    <p>Los 1900 mt de natación se desarrollaran en las aguas de Playa de Agua Dulce del Océano Pacífico, con condiciones de marea muy tranquilas. Los 90 km del sector de ciclismo se desarrollarán a lo largo de la Costa Verde, sobre un circuito plano y muy rápido en su mayor porcentaje.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn-theme black">
+                    <a href="inscription" class="btn-theme black">
                         <span class="txt">Ver Todo</span>
-                        <span class="round">
-                                        <i class="fa fa-eye"></i>
-                                    </span>
+                        <span class="round"><i class="fa fa-eye"></i></span>
                     </a>
                 </div>
                 <div class="col-sm-5">

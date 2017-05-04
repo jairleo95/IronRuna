@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<!-- Pagination Start -->
-				<nav class="pagination-area">
+				<!--<nav class="pagination-area">
 					<ul class="pagination">
 						<li><a href="#" aria-label="Previous"><span class="icon-arrow-left" aria-hidden="true"></span></a></li>
 						<li class="active"><a href="#">1</a></li>
@@ -33,7 +33,7 @@
 						<li><a href="#">3</a></li>
 						<li><a href="#" aria-label="Next"><span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
 					</ul>
-				</nav>
+				</nav>-->
 				<!-- Pagination End -->
 			</div>
 		</div>

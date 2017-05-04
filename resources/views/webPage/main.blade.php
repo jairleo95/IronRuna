@@ -29,6 +29,7 @@
     <link href="css/main.css" rel="stylesheet" type="text/css">
     <link href="css/responsive.css" rel="stylesheet" type="text/css">
     <link href="css/color.css" rel="stylesheet" type="text/css">
+    <!--pluginss-->
     <link href="css/animate.css" rel="stylesheet" type="text/css">
 
 
@@ -38,7 +39,7 @@
     @yield('styles')
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
-<body>
+<body  >
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please
     <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -49,9 +50,9 @@
         <div class="topbar haslayout">
             <div class="container">
                 <div class="row">
-                    <div class="left-bar pull-left">
+                    <div class="pull-left">
                         <div class="dropdown">
-                            <button class="btn-dropdown btn-languages" type="button" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn-dropdown btn-languages" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <span>ES</span>
                                 <i class="fa fa-level-down"></i>
                             </button>
@@ -60,22 +61,25 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="right-bar pull-right">
-                        <nav class="add-nav">
-                            <ul>
-                                @if (session()->has('userName'))
-                                    <li class="dropdown pull-right" >
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ session('userName')}} <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
+                    <div class="pull-right">
+                          <div class="dropdown" >
+                                 @if (session()->has('userName'))
+                              
+                                        <button class="btn-dropdown" type="button" data-toggle="dropdown" >{{ session('userName')}} 
+                                        <span class="fa fa-level-down"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
                                             <li><a href="{{route('logout')}}">Cerrar Sesión</a></li>
                                         </ul>
-                                    </li>
+                             
                                     @else
-                                    <li><a href="register">Crear Cuenta</a></li>
-                                    <li><a href="login">Iniciar Sesión</a></li>
+
+                                   <a  class="btn-dropdown" style="margin-left:7px;color: white;text-decoration: none" href="register">Crear Cuenta</a> 
+
+                                    <a class="btn-dropdown" style="margin-left:7px;color: white;text-decoration: none" href="login">Iniciar Sesión</a> 
                                 @endif
-                            </ul>
-                        </nav>
+                                       </div>
+                         
                     </div>
                 </div>
             </div>
@@ -115,18 +119,17 @@
         @yield('content')
 <!-- Footer Start -->
     <footer id="footer" class="haslayout">
-        <div class="container-fluid">
-            <div class="row">
-                <a id="btn-backtotop" class="btn-backtotop" href="#">
-                    <span>Volver Arriba</span>
-                </a>
-            </div>
-        </div>
+       
         <div class="container footer">
+        
+
             <div class="row">
+              
                 <div class="bottom-strip">
                     <span class="copyright">© 2017  |  All Rights Reserved</span>
-                    <span class="payment-card"><img src="images/payment-card-icon.png" alt="image description"></span>
+                  <a id="btn-backtotop"   class="btn-backtotop" href="#">
+                   <!-- <span>Volver Arriba</span>-->
+                </a>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
 				<div class="row">
 					<article class="post single">
 						<h2>Para un triatlón impresionante de todos nosotros</h2>
-						<div class="description">
+						<div class="description text-justify">
                             1. La competencia tendrá inicio el domingo 06 de agosto del 2017.<br>
                             2. Categorías:
                         <div class="">

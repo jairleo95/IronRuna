@@ -10,10 +10,20 @@ class PayController extends Controller
 {
     public function getCheckoutPage()
     {
-        return view('webPage.checkout');
+    	if (session()->has('userName')){
+			# code...
+			return view('webPage.checkout');
+		}else{
+  			return  view('webPage.register');
+		}  
     }
     public function checkoutAccess($id){
-        Session::put('eventSelected',$id);
-        return  Redirect::route('checkout');
+		if (session()->has('userName')){
+			# code...
+			  Session::put('eventSelected',$id);
+			  return  Redirect::route('checkout');
+		}else{
+  			return  Redirect::route('register');
+		}  
     }
 }

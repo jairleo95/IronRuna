@@ -119,7 +119,7 @@ class RegisterController extends Controller
             'name'=>'Iron Runa',
             'subject'=>'Iron Runa - Confirmación de subscripción',
             'body'=>$token,
-            'confirmationURL'=>'http://localhost/IronRuna/public/subscriberConfirmation/'.$token
+            'confirmationURL'=>'http://ironruna.com/IronRuna/subscriberConfirmation/'.$token
         ]);
     }
     public function subscribeConfirmation($token){
