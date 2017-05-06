@@ -71,7 +71,12 @@ Route::get('role/create','Role\RoleController@getRegister');
 /*End Role*/
 
 // Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::get('forgotPassword', 'Auth\PasswordController@getEmail');
+Route::get('recoveryPasswordView',[
+'uses'=>'Auth\PasswordController@recoveryPasswordView',
+'as'=>'recoveryPasswordView'
+    ]);
+
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
 // Password reset routes...
@@ -151,4 +156,8 @@ Route::get('products-single', function () {
 });
 Route::get('shop', function () {
     return view('webPage.shop');
+});
+
+Route::get('payTicket',function(){
+     return view('webPage.successPay');
 });

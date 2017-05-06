@@ -35,25 +35,14 @@
 								<input type="password" name="password" class="form-control"   />
 						    	
 							</div>
-						</div>
-
-						<!--<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>-->
-
+						</div> 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-success" style="margin-right: 15px;">
-									Ok
+								<button type="submit" class="btn btn-success pull-right"  >
+									Enter
 								</button>
 
-								<!--<a href="/password/email">Forgot Your Password?</a>-->
+								 <a href="forgotPassword">Forgot Your Password?</a>
 							</div>
 						</div>
 					</form>

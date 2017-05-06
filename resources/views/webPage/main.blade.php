@@ -35,7 +35,7 @@
 
     <link href='css/plugins/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
     <link href='css/plugins/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-
+  
     @yield('styles')
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
@@ -46,7 +46,7 @@
 <![endif]-->
 <div id="wrapper">
     <!-- Header Start -->
-    <header id="header" class="haslayout" style="height: 400px">
+    <header id="header" class="haslayout" style="height:400px">
         <div class="topbar haslayout">
             <div class="container">
                 <div class="row">
@@ -84,12 +84,14 @@
                 </div>
             </div>
         </div>
-        <div class="navigation-area haslayout" style="height:200px" >
+        <div class="navigation-area haslayout" >
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-4 bounceInLeft animated" style="padding:20px;display: block; " ><a href="index">
-                            <img src="images/logo2.png" alt="" width="400" height="60"></a></div>
-                    <nav id="nav" class="nav-bar haslayout" >
+                    <div class="padding-10 col-md-6 col-md-offset-4 bounceInLeft animated"  style="padding-top: 30px;padding-bottom: 10px;" >
+                    <a href="index">
+                            <img src="images/logo2.png" class="img-responsive" width="400" height="60"></a>
+                    </div>
+                    <nav id="nav" class="nav-bar haslayout"   >
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>

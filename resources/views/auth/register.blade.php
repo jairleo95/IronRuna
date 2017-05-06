@@ -143,6 +143,13 @@
                                 </div>
                             </div>
 						</div>
+							<div class="form-group">
+							 <label class="col-md-4 control-label"></label>
+							<div class="col-md-6">
+                               <div class="g-recaptcha pull-right" data-sitekey="6Le_NCAUAAAAAAQwX48E9wq5mMCBzUnPkRJPhnfq"></div>
+                            </div>
+					 
+						 </div>
 						<footer>
 								<button type="submit" class="btn btn-success pull-right">
 									@lang('register.attributes.btnRegister') <i class="fa fa-send"></i>
@@ -159,6 +166,7 @@
 </div>
 @endsection
 @section('scripts')
+ <script src='https://www.google.com/recaptcha/api.js'></script>
 	<script>
 		function initFormUserRegister(){
             $('.birthDate').datetimepicker({

@@ -17,10 +17,7 @@
 		</section>
 		<!-- Heading End -->
 		<div class="container content">
-			<div class="row">
-
-			
-			 
+			<div class="row">	 
 				 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading">Tickets</div>
@@ -52,18 +49,8 @@
 								</div>
 							</div>
   </div>
-
  
-
-						
-</div>
-						 
-						
-						
-
-			 
-				 
-			</div>
+</div> </div>
 			<br>
 			 
 			<div class="row">
@@ -219,7 +206,6 @@
 				
 								</div>
 								<div class="col-md-6">
-								 
 									<div class="panel panel-success">
 										<div class="panel-heading">Usuarios Agregados</div>
 										<div class="panel-body">
@@ -239,8 +225,15 @@
 									</div>
 								</div>
 
+
 							</div>
 						</div>
+						<div class="row">
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div class="well well-light">
+
+</div></div>
+						
 						<div class="row">
 							<button class="btn btn-success pull-right payButton" type="submit">
 										<i class="fa fa-send"></i>
@@ -250,6 +243,30 @@
 		</div>
 		
 			<input type="hidden" class="eventSelected" value="{{ session('eventSelected')}}" >
+
+			<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-danger">Terminos y Condiciones</h4>
+      </div>
+      <div class="modal-body text-justify">
+        
+				<p>Declaro bajo juramento que no padezco afecciones físicas adquiridas o congénitas, ni lesiones que pudieran ocasionar trastornos en mi salud o condiciones de vida, como consecuencia de participar en la presente competencia. Asimismo declaro bajo juramento que antes de realizar la competencia me he realizado un chequeo médico y me encuentro en condiciones físicas óptimas para participar en la misma, asimismo asumo todos los riesgos asociados con la participación en la presente competencia.  Tomo conocimiento y acepto voluntariamente, que IRONRUNA y los Sponsors NO toman a su cargo ni se responsabilizan por ningún tipo de indemnización, reclamo, costo, daño y/o perjuicio reclamado, en lo concerniente  a, daños por accidentes, daños materiales, físicos o psíquicos o morales, causados hacia mi persona, con motivo y en ocasión de la competencia en la que participaré. Habiendo  leído  esta declaración  y  conociendo  estos hechos, libero  a IRONRUNA de todo  y  cualquier reclamo  o  responsabilidad  de cualquier tipo  que surja de mi participación  en  este evento  aunque esta responsabilidad pueda surgir por negligencia o culposidad de parte de las personas nombradas en esta declaración, así como de cualquier extravío, robo y/o hurto que pudiera sufrir. Como  así también  manifiesto  que no serán  responsables por incendios, cortocircuitos, robos, hurtos, caso  fortuito, cualquiera fuera la causa que lo  origine, daño  en  mi salud  provenientes de riñas o  peleas de terceros, daño  en  mi salud proveniente de afecciones físicas o no, que puedan acontecer con anterioridad, durante el transcurso o con posterioridad a la finalización de la competencia. Autorizo a los organizadores de la competencia y sponsor a utilizar, reproducir, distribuir y/o publicar fotografías, películas, videos, grabaciones y/o cualquier otro medio de registración de mi persona tomadas con motivo y en ocasión de la presente competencia, sin compensación económica alguna a  favor del participante de la presente competencia. 
+				</p>
+				<p>Por la presente, declaro tener __________ años de edad, y haber leído este documento y entendido su contenido.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 		@endsection
 		@section('scripts')
     		<script>
@@ -261,7 +278,7 @@
 						if (num==1) {$('.tbodyUserAdded').empty();}
 						var op=$('.discipline').val();
 						var  fullname =$('.fullName').val()+ ' '+$('.lastName').val();
-						$('.tbodyUserAdded').append('<tr><td>'+num+'</td><td>'+fullname+'</td><td>'+op+'</td></tr>');
+						$('.tbodyUserAdded').append('<tr class="trUserAdded"><td>'+num+'</td><td>'+fullname+'</td><td>'+op+'</td></tr>');
 						num++;
 						 
 						$(".discipline option[value='"+op+"']").remove();
@@ -284,7 +301,7 @@
 						totalToPay="0.0";
 						console.log('costtype:'+costtype);
 						if (costtype===2) {
-							console.log('truee')
+							//console.log('truee')
 							$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);}
 						});
 
@@ -331,7 +348,7 @@
                         hs += '  <td>';
                         hs += '<div class="form-check">';
                         hs += '  <label class="form-check-label">';
-                        hs += ' <input type="radio" class="form-check-input optionsRadios'+i+'" name="optionsRadios"  value="1">';
+                        hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="1">';
                         hs += '  </label>';
                         hs += '  </div>';
                         hs += ' </td>';
@@ -360,6 +377,21 @@
         var event =$('.eventSelected').val();
 
         var btnPay=$('.payButton');
+        btnPay.click(function(){
+      
+        	var opcRadio=$('.optionsRadios:checked').val();
+        		var costtype= $('.optionsRadios:checked').parents('tr').find($('.itemQuantity')).data('costtype');
+        	  	console.log(opcRadio); 
+        	  	var s = $(".tbodyUserAdded .trUserAdded").length;
+          	
+          	console.log("costtype:"+costtype); 
+          	if (costtype===2&s===0 ) {
+          		/*usuario adicionales obligatorios*/
+          			alert("obligatorios!::"+s)
+          	}else{
+          		window.location="payTicket";
+          	}
+        });
         buildTicket(tableTicketDetails,event);
     </script>
     @endsection

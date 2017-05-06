@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Redirect;
 
 class PasswordController extends Controller
 {
@@ -25,8 +26,15 @@ class PasswordController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+        public function __construct()
+        {
+            $this->middleware('guest');
+        }
+        public function recoveryPasswordView(){ 
+                return  view('auth.password');
+        }
+            public function getEmail(){
+
+                return Redirect::route('recoveryPasswordView');
+            }
 }
