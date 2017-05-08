@@ -143,6 +143,27 @@
                                 </div>
                             </div>
 						</div>
+						<!--Aditional data-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">@lang('register.attributes.category')</label>
+							<div class="col-md-6 selectContainer" >
+								<select name="category" class="form-control input-sm">
+									<option value="1">Seleccione</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">@lang('register.attributes.observation')</label>
+							<div class="col-md-6" >
+								  <textarea class="form-control" name="observation" rows="5" style="resize: none;"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">@lang('register.attributes.emergencyPhone')</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control input-sm" name="emergencyPhone">
+							</div>
+						</div>
 							<div class="form-group">
 							 <label class="col-md-4 control-label"></label>
 							<div class="col-md-6">

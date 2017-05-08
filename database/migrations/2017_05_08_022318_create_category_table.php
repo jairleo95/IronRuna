@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePayTable extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreatePayTable extends Migration
      */
     public function up()
     {
-        Schema::create('pay', function (Blueprint $table) {
-            $table->increments('idPay');
-            $table->integer('idPayAccess')->unsigned();
-            $table->double('totalCost',10,2);
-            $table->boolean('paySttatus');
+        Schema::create('category', function (Blueprint $table) {
+            $table->increments('idCategory');
+            $table->string('categoryName');
+            $table->integer('maleMin');
+            $table->integer('maleMax');
+             $table->integer('femaleMin');
+            $table->integer('femaleMax');
             $table->boolean('recordStatus');
-            $table->foreign('idPayAccess')->references('idPayAccess')->on('payAccess');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreatePayTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pay');
+        Schema::dropIfExists('category');
     }
 }

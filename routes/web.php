@@ -22,6 +22,7 @@ Route::get('testQuery','Auth\LoginController@testQuery');
 /**end test routes*/
 
 Route::get('getAllPostedEvtens','EventController@getAllEvent');
+Route::get('validateEventInscription','EventController@validateEventInscription');
 
 Route::get('main',['as' => 'main', 'uses' => 'Auth\AuthController@home']);
 
@@ -54,9 +55,11 @@ Route::get('logout', [
 ]);
 
 /*Subscribers*/
-Route::get('subscription/success', function () {
-    return view('emails.subscriber.successSubscriber');
-});
+Route::get('subscriptionsuccess', [
+'uses'=>'Auth\RegisterController@successRegisterMessage',
+'as'=>'subscriptionsuccess'
+    ]);
+
 Route::get('register', [
     'uses'=>'Auth\RegisterController@getRegister',
     'as'=>'register'
@@ -146,6 +149,16 @@ Route::get('checkout', [
     'uses'=>'PayController@getCheckoutPage',
     'as'=>'checkout'
 ]);
+Route::post('payTicket', [
+    'uses'=>'UserDataPayController@payTicketByUsers',
+    'as'=>'payTicket'
+]);
+Route::get('payTicketSuccess', [
+    'uses'=>'UserDataPayController@payTicketSuccess',
+    'as'=>'payTicketSuccess'
+]);
+
+
 Route::get('checkout/{id}', 'PayController@checkoutAccess');
 Route::get('getCostByEvent','CostController@costByEvent');
 Route::get('my-account', function () {
@@ -158,6 +171,4 @@ Route::get('shop', function () {
     return view('webPage.shop');
 });
 
-Route::get('payTicket',function(){
-     return view('webPage.successPay');
-});
+

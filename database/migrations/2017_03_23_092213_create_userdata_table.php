@@ -29,9 +29,13 @@ class CreateUserdataTable extends Migration
             $table->boolean('confirmationStatus');
             $table->boolean('recordStatus');
             $table->string('confirmationToken',100);
-            $table->rememberToken();
+
+           $table->rememberToken();
             $table->timestamps();
             $table->foreign('idRole')->references('idRole')->on('role');
+
+
+
         });
     }
 

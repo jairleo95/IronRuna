@@ -35,7 +35,10 @@ return [
         'documentNumber'=>'Número de Documento',
         'cellphone'=>'Celular',
         'birthdate'=>'Fecha de Nacimiento',
-        'btnRegister'=>'Registrar'
+        'btnRegister'=>'Registrar',
+        'category'=>'Categoría',
+        'observation'=>'Observación',
+        'emergencyPhone'=>'En caso de emergencia llamar a',
     ],
 
 ];

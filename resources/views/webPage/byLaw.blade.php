@@ -1,4 +1,19 @@
+
  @extends('webPage.main')
+@section('styles')
+<style type="text/css">
+ul{
+    list-style: none; 
+}
+ .ul-inscription{
+   list-style: initial; 
+   list-style-type: square;
+   margin-left: 5px;
+}
+
+
+</style>
+@endsection
  @section('content')
 		<!-- Heading Start -->
 		<section class="page-heading haslayout">
@@ -107,17 +122,18 @@ Diciembre de 2016. La edad mínima para poder participar de la competencia es 18
 <li>5. El valor de las inscripciones es de S/. 180.00 SOLES, INDIVIDUALES, y de S/. 250.00 SOLES, POSTAS. </li>
 <li> 6. El atleta que haya efectuado el depósito de la inscripción no tendrá derecho al reembolso de la misma, en caso de desistir de participar en la prueba. </li>
 <li>7. La inscripción incluye: 
-        <ul>
-        <li>- Derecho a participar </li>
-        <li>- Regalos de los sponsors </li>
-        <li>- Polo de FINISHER. </li>
-        <li> - Almuerzo de carbohidratos </li>
-        <li> - Medalla de FINISHER para todos los atletas que crucen la meta. </li>
-        <li>- Hidratación antes, durante y después de la competencia con agua y Yumax. </li>
-        <li>- Seguro de atleta. </li>
-        <li>- Cinto porta número y gorro para natación. </li>
-        <li>- Chip para clasificación. </li>
-        <li>- Servicio de masajes en la llegada. </li>
+
+        <ul class="ul-inscription">
+                <li> Derecho a participar </li>
+                <li> Regalos de los sponsors </li>
+                <li> Polo de FINISHER. </li>
+                <li> Almuerzo de carbohidratos </li>
+                <li> Medalla de FINISHER para todos los atletas que crucen la meta. </li>
+                <li> Hidratación antes, durante y después de la competencia con agua y Yumax. </li>
+                <li> Seguro de atleta. </li>
+                <li> Cinto porta número y gorro para natación. </li>
+                <li> Chip para clasificación. </li>
+                <li> Servicio de masajes en la llegada. </li>
         </ul>
 </li>
 <li>- Seguridad en parque cerrado de bicicletas hasta la finalización del evento. </li>

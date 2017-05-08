@@ -1,4 +1,4 @@
-@extends('app')
+@extends('webPage.main')
 @section('content')
     <div class="container">
         <div class="row">

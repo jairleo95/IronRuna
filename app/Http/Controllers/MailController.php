@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Mail;
 
 use App\Http\Requests;
@@ -37,6 +38,8 @@ class MailController extends Controller
                                 //receptor
                                 $message->to($dataEmail['email'], env('MAIL_NAME'));
                     });
-                return \View::make('emails.subscriber.successSubscriber');
+                   
+              
+              
     }
 }

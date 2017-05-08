@@ -22,7 +22,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
+                                                                                                
     /**
      * Where to redirect users after login.
      *
@@ -53,7 +53,7 @@ class LoginController extends Controller
         ]);
     }
     public function findUserDataByUserName($user){
-        return DB::select('select * from userData where userName = ? ', [$user]);
+        return DB::select('select * from userData where userName = ?', [$user]);
     }
     public function isValidUserName(Request $req){
         $userData=$this->findUserDataByUserName($req->email);
@@ -77,13 +77,18 @@ class LoginController extends Controller
       $userData=$this->findUserDataByUserName($req->email);
         if ($userData!=null){
             if($userData[0]->recordStatus==1){
-                if(password_verify($req->password,$userData[0]->userPassword)){
+                if (    $userData[0]->confirmationStatus=='1') {
+                    # code...
+                    if(password_verify($req->password,$userData[0]->userPassword)){
                     $rptaView='index';
                     session(['userName' => $userData[0]->userName]);
                 }else{
                     $rptaView='login';
                 }
+                }else{
+                      $rptaView='login';
 
+                }
             }else{
                 $rptaView='login';
             }

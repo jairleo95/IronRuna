@@ -8,6 +8,31 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+
+    public function validateEventInscription(Request $request){
+// dd(decrypt($request->idEvent));
+
+ 
+        if (session()->has('userName')){
+            # code...
+           // dd($idUser);
+              $idUser=   $request->session()->get('userName');
+                $countEvent= DB::select('select count( *) as numPay from userDataPay up , cost c , userData u where up.idCost =c.idCost and u.idUserData=up.idUserData and up.recordStatus=1 and c.idEvent=? and u.userName=? ', [decrypt($request->idEvent), $idUser]);
+        //  dd($countEvent);
+
+                $arr=[
+                'session' => true,
+                'EventInscription'=>$countEvent[0]->numPay 
+            ];
+          
+
+          }else{
+             $arr=[
+                'session' => false 
+            ];  
+          }
+        return response()->json($arr);        
+    }
     public function getAllEvent(){
         $cost = new CostController();
         $eventType = new EventTypeController();

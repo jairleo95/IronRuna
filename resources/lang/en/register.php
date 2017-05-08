@@ -23,7 +23,11 @@ return [
         'documentNumber'=>'Document Number',
         'cellphone'=>'Cellphone',
         'birthdate'=>'Birthdate',
-        'btnRegister'=>'Register'
+        'btnRegister'=>'Register',
+        'category'=>'Category',
+        'observation'=>'Observation',
+        'emergencyPhone'=>'In case of emergency call',
+        
     ],
     
     ];

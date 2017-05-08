@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class PayController extends Controller
 {
@@ -18,12 +19,40 @@ class PayController extends Controller
 		}  
     }
     public function checkoutAccess($id){
+
 		if (session()->has('userName')){
 			# code...
 			  Session::put('eventSelected',$id);
 			  return  Redirect::route('checkout');
 		}else{
+
+         // dd("hello");
   			return  Redirect::route('register');
 		}  
     }
+
+    protected function create(array $data)
+    {
+       return DB::table('pay')->insert([
+               
+                'totalCost'=>$data['totalCost'],
+                'idPayAccess'=>$data['idPayAccess'],
+                'payStatus'=>$data['payStatus'],
+                   'payCode'=>$data['payCode'],
+                'recordStatus'=>$data['recordStatus'] 
+                ]
+        );
+    }
+
+    public  function createPay(Request $request){
+ 		return $this->create([
+                        
+                        'totalCost'=>$request->input('totalCost'),
+                        'payStatus'=> false,
+                        'payCode'=>null,
+                        'recordStatus'=>true,
+                        'idPayAccess'=>null
+                        ]);
+    }
+
 }

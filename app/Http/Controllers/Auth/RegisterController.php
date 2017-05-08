@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     {
         DB::table('userData')->insert(
                 [
-                    'idRole' => $data['idRole'],
+                'idRole' => $data['idRole'],
                 'userName'=>$data['userName'],
                 'userPassword'=>bcrypt($data['userPassword']),
                 'fullName'=>$data['fullName'],
@@ -80,7 +81,13 @@ class RegisterController extends Controller
                 'expirationDate'=>$data['expirationDate'],
                 'recordStatus'=>$data['recordStatus'],
                 'confirmationStatus'=>$data['confirmationStatus'],
-                'confirmationToken'=>$data['confirmationToken']
+                'confirmationToken'=>$data['confirmationToken'],
+
+                'idCategory'=>$data['category'],
+                'idTeam'=>1,
+                'observation'=>$data['observation'],
+                'emergencyPhone'=>$data['emergencyPhone'],
+                'phone'=>$data['phone']
                 ]
         );
 
@@ -92,10 +99,15 @@ class RegisterController extends Controller
         $userData = DB::select('select * from userData where confirmationToken = ? ', [$token]);
         return $userData;
     }
+    public function successRegisterMessage() {
+
+
+       return view('emails.subscriber.successSubscriber');
+    }
     public function subscriberUser(Request $request){
         $token=str_random(100);
         $this->create(
-                        /*rol :suscriber*/
+                     
                         [
                         'idRole' => 1,
                         'userName'=>$request->input('email'),
@@ -110,7 +122,11 @@ class RegisterController extends Controller
                         'expirationDate'=>date('Y-m-d', null),
                         'recordStatus'=>true,
                         'confirmationStatus'=>false,
-                        'confirmationToken'=>$token
+                        'confirmationToken'=>$token,
+                        'category'=>$request->input('category'),
+                        'observation'=>$request->input('observation'),
+                        'emergencyPhone'=>$request->input('emergencyPhone'),
+                        'phone'=>$request->input('phone')
                         ]
             );
         /*Send Email to subscriber confirmation*/
@@ -119,8 +135,9 @@ class RegisterController extends Controller
             'name'=>'Iron Runa',
             'subject'=>'Iron Runa - Confirmación de subscripción',
             'body'=>$token,
-            'confirmationURL'=>'http://ironruna.com/IronRuna/subscriberConfirmation/'.$token
+            'confirmationURL'=>'http://ironruna.com/subscriberConfirmation/'.$token
         ]);
+                return Redirect::route('subscriptionsuccess');
     }
     public function subscribeConfirmation($token){
          $userData=$this->getUserDataByConfirmationToken($token);
@@ -131,7 +148,7 @@ class RegisterController extends Controller
                 if ($userData[0]->confirmationStatus==0){
                   DB::update('update userData set confirmationStatus = 1 where confirmationToken = ? and recordStatus =1',
                         [$token]);
-                    $rptaView='main';
+                    $rptaView='index';
                     $message= 'Se ha confirmado su cuenta correctamente!';
                 }else{
 

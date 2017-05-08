@@ -7,7 +7,8 @@
 @section('content')
     <div class="container">
            <div class="row">
-                   <div class="col col-md-8 col-md-offset-2" ><div class="panel panel-default"><div class="panel-heading"><h3>Tu ticket ha sido registrado, por favor realiza el pago respectivo </h3></div><div class="panel-body"><div class="well">
+                   <div class="col col-md-8 col-md-offset-2" ><div class="panel panel-default"><div class="panel-heading"><h3>Tu ticket ha sido registrado, por favor realiza el deposito respectivo </h3></div><div class="panel-body">
+            <div class="well well-light">
 <!-- Left-aligned -->
 <div class="media">
   <div class="media-left media-middle">
@@ -23,9 +24,10 @@
 
    
 </div>
-                    </div><div class="panel-footer">
-                                       <a href="inscription" class="btn btn-primary pull-right">ok</a>
-
+                    </div>
+                    <div class="panel-footer">
+                                       <a href="inscription" class="btn btn-primary pull-right">ok </a>
+<br>
                                        </div>
                         </div>
                         </div>

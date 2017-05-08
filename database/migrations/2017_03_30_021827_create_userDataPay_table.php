@@ -19,6 +19,7 @@ class CreateUserDataPayTable extends Migration
             $table->integer('idCost')->unsigned();
             $table->boolean('payByCurrentUserStatus');
             $table->boolean('recordStatus');
+            
             $table->foreign('idUserData')->references('idUserData')->on('userData');
             $table->foreign('idPay')->references('idPay')->on('pay');
             $table->foreign('idCost')->references('idCost')->on('cost');

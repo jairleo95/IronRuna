@@ -21,6 +21,7 @@ class CreateCostTable extends Migration
             $table->boolean('recordStatus');
             $table->boolean('costType');
             $table->integer('maxQuantity');
+                $table->integer('minQuantity');
             $table->foreign('idEvent')->references('idEvent')->on('event');
             $table->timestamps();
         });

@@ -24,25 +24,57 @@
 					<div class="eventListDetails">
 					</div>
 				</div>
-				<!-- Pagination Start -->
-				<!--<nav class="pagination-area">
-					<ul class="pagination">
-						<li><a href="#" aria-label="Previous"><span class="icon-arrow-left" aria-hidden="true"></span></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#" aria-label="Next"><span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
-					</ul>
-				</nav>-->
-				<!-- Pagination End -->
+			 
 			</div>
 		</div>
 	</section>
 	<!-- Events End -->
 
+
 @endsection
 @section('scripts')
 	<script type="text/javascript">
+  
+function initInscriptionEvents(){
+    $.each($(".initInscription"),function(index){
+        var objBtn=  $(this);
+        var idEvent=$(this).data('value');
+            var uriEvent='checkout/'+idEvent;
+        var data ={
+            'idEvent':idEvent
+        };
+        console.log(idEvent);
+        $.ajax({
+            url:'validateEventInscription',
+            data:data,
+            type:'get',success:function(data){
+                var btnName='Inscribirse';             
+                if (data.session) {
+                    if (data.EventInscription>0) {
+                        btnName='En Proceso';
+                    }
+                }else{
+                         btnName='Registrarse';
+                }
+          
+                objBtn.append('<button class="btnInitEvent'+index+' btn-theme red btn-book-now" value="'+uriEvent+'">'
+                            +   '<span class="txt">'+btnName+'</span>'
+                                                +   '<span class="round">'
+                                                +   '<i class="fa fa-arrow-right"></i>'
+                                                +   '</span>'+
+                                '</button>');
+                $('.btnInitEvent'+index).click(function () {
+                    window.location=uriEvent;
+                });
+
+            }
+        });
+        /*validar si esta en el evento*/
+     
+
+    });
+}
+
         var divEnvetListDetails =$('.eventListDetails');
         divEnvetListDetails.empty();
         function getAllPostedEvtens(){
@@ -75,12 +107,8 @@
                             +'</ul>'
                             +'</div>'
                             +'</a>'
-                            +'<a href="checkout/'+list[i].idEvent+'" class="btn-theme red btn-book-now">'
-                            +	'<span class="txt">Inscribirse</span>'
-                            +	'<span class="round">'
-                            +	'<i class="fa fa-arrow-right"></i>'
-                            +	'</span>'
-                            +'</a>'
+                            +' <div class="initInscription" data-value="'+list[i].idEvent+'"><div> '
+                            
                             +'</div>'
                             +'<div id="collapseTwos" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwos">'
                             +'<div class="panel-body">'
@@ -131,6 +159,7 @@
                             +'</div>';
                     }
                     divEnvetListDetails.append(htmlString);
+                    initInscriptionEvents();
                 }
             });
         }
