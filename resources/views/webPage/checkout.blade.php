@@ -5,6 +5,9 @@
 <link href="css/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css" media="screen" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
+
 @endsection
 @section('content')
 <!-- Heading Start -->
@@ -67,7 +70,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label">Disciplina </label>
 									<div class="col-md-6">
-										<select name="discipline" class="form-control input-sm discipline">
+										<select name="discipline" class="form-control input-sm discipline" multiple="multiple">
 											<option value="Natación">Natación</option>
 											<option value="Ciclismo">Ciclismo</option>
 											<option value="Maraton">Maraton</option>
@@ -122,9 +125,17 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-4 control-label">@lang('register.attributes.district')</label>
-									<div class="col-md-6">
-										<select name="district" class="form-control input-sm">
+									<label class="col-md-4 control-label">@lang('register.attributes.country')</label>
+									<div class="col-md-6 selectContainer" >
+										<select name="country" class="form-control input-sm">
+											<option value="1">Perú</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label">@lang('register.attributes.department')</label>
+									<div class="col-md-6 selectContainer" >
+										<select name="department" class="form-control input-sm">
 											<option value="1">Seleccione</option>
 										</select>
 									</div>
@@ -139,21 +150,16 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-4 control-label">@lang('register.attributes.department')</label>
-									<div class="col-md-6 selectContainer" >
-										<select name="department" class="form-control input-sm">
+									<label class="col-md-4 control-label">@lang('register.attributes.district')</label>
+									<div class="col-md-6">
+										<select name="district" class="form-control input-sm">
 											<option value="1">Seleccione</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-md-4 control-label">@lang('register.attributes.country')</label>
-									<div class="col-md-6 selectContainer" >
-										<select name="country" class="form-control input-sm">
-											<option value="1">Perú</option>
-										</select>
-									</div>
-								</div>
+								
+								
+								
 
 								<div class="form-group">
 									<label class="col-md-4 control-label">@lang('register.attributes.documentType')</label>
@@ -287,6 +293,8 @@
 	</div>
 	@endsection
 	@section('scripts')
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 	<script>
 		/*variables*/
 		var totalCost=0.0;
@@ -308,39 +316,47 @@
 		function calcTotalCostByEvent(itemQuantity,itemPrice){
 			return itemQuantity*itemPrice;
 		}
-
-		function setItemValue (objOptionRadios){
-				objTotalCost.empty();
-
-
-					var costtype= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
-					unitCost= objOptionRadios.parents('tr').find($('.totalITem')).text();
-				 
-						objTotalCost.append(unitCost);
-					 
-						idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
-			 
-					if (costtype===2) {
-						$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);
+					function calculateTotalCost(objOptionRadios){
+								/*Calcular costo total*/
+								objTotalCost.empty();
+								unitCost= objOptionRadios.parents('tr').find($('.totalITem')).text();
+								objTotalCost.append(unitCost);
 					}
-		}
-		function setTicketValues(objSpinner){
-			var itemQuantity=objSpinner.spinner( "value" );
-			var itemPrice=objSpinner.parents('tr').find($('.itemPrice')).val();
-			totalCost =calcTotalCostByEvent(itemQuantity,itemPrice);
-			objSpinner.parents('tr').find($('.totalITem')).text(totalCost);
-		}
+
+					function setItemValue (objOptionRadios){
+							
+								var costtype= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
+
+							calculateTotalCost(objOptionRadios);
+								 
+									idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
+						 
+								if (costtype===2) {
+									$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);
+								}
+					}
+				function setTicketValues(objSpinner){
+					var itemQuantity=objSpinner.spinner( "value" );
+					var itemPrice=objSpinner.parents('tr').find($('.itemPrice')).val();
+					totalCost =calcTotalCostByEvent(itemQuantity,itemPrice);
+					objSpinner.parents('tr').find($('.totalITem')).text(totalCost);
+					calculateTotalCost(objSpinner);
+				}
+				function initUserDataForm(){
+					$('.discipline').select2();
+				}
 
 		function initTickesEventElements(objItemQuantity,objOptionRadios){
 			for (var i = 0; i < objItemQuantity.length; i++) {
 				var max =$( ".itemQuantity"+i ).data('valuemax');
 
 					//setTicketValues($( ".itemQuantity"+i )); 
-					setItemValue($(".optionsRadios"+i));
+					$(".optionsRadios"+i).click(function(){
 
-				$(".optionsRadios"+i).click(function(){
 					var objOptionRadios =$(this);
 					setItemValue(objOptionRadios);
+					var item =$(this).val();
+					setTicketValues($( ".itemQuantity"+item )); 
 					});
 
 				$( ".itemQuantity"+i ).spinner({
@@ -354,6 +370,11 @@
 						setTicketValues($(this)); 
 					}
 				});
+				if (i === 0) {
+						setItemValue($(".optionsRadios"+i));
+						setTicketValues($( ".itemQuantity"+i )); 
+						 
+					}
 			}	
 
 		}
@@ -385,7 +406,13 @@
 						hs += '  <td>';
 						hs += '<div class="form-check">';
 						hs += '  <label class="form-check-label">';
-						hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="1">';
+						if (i===0) {
+
+						hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  checked="checked" value="'+i+'">';
+						}else{
+						hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="'+i+'">';
+						}
+					
 						hs += '  </label>';
 						hs += '  </div>';
 						hs += ' </td>';
@@ -408,6 +435,8 @@
 						initTickesEventElements(objItemQuantity,objOptionRadios);
 						hs='';
 					}
+					initUserDataForm();
+
 				} else{
 					console('something was wrong');
 				}
