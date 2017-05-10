@@ -12,11 +12,7 @@
 */
 
 /**test routes*/
-Route::get('test', function () {
-    $data = Session::all();
-    //Session::save();
-    dd($data);
-});
+Route::get('test', 'Auth\RegisterController@test');
 Route::get('testQuery','Auth\LoginController@testQuery');
 
 /**end test routes*/
@@ -60,6 +56,8 @@ Route::get('subscriptionsuccess', [
 'as'=>'subscriptionsuccess'
     ]);
 
+
+Route::get('findUserDataByDocummentNumber','Auth\RegisterController@findUserDataByDocummentNumber');
 Route::get('register', [
     'uses'=>'Auth\RegisterController@getRegister',
     'as'=>'register'

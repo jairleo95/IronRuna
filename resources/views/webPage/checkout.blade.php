@@ -57,9 +57,24 @@
 		<br>
 
 		<div class="row">
-			<div class="aditionalData" style="display: none;" >
-				<div class="col-md-6">
 
+			<div class="aditionalData" style="display: none;" >
+				<div class="col-md-6 userdataSearch">
+					<div class="well well-light">
+						<div class="input-group" style="width: 100%;">
+							<input type="text" class="form-control documentNumberSearch" placeholder="Search for document number" style="width: 100%;">
+							<span class="input-group-btn btnInconDocumentSearch" >
+								
+							</span>
+						</div><!-- /input-group -->
+						<br>
+						<section> 
+							<div class="row"><div class="col-md-6"><span class="userDataItem"></span></div>
+							<div class="col-md-6"><div class="disciplineItem"></div></div></div>
+						</section>  
+					</div>
+				</div>
+				<div class="  userDataRegister" style="display: none;" >
 					<div class="panel panel-success">
 						<div class="panel-heading">
 							<i class="fa fa-user"></i> <span> Usuarios</span>
@@ -67,6 +82,21 @@
 						<div class="panel-body">
 							<form class="form-horizontal formUserRegister" role="form" method="POST" action="{{route('register')}}">
 
+								<div class="form-group">
+									<label class="col-md-4 control-label">@lang('register.attributes.documentType')</label>
+									<div class="col-md-6 selectContainer">
+										<select name="documentType" class="form-control input-sm documentType">
+											<option value="1">DNI</option>
+											<option value="2">Pasaporte de Extranjería</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label">@lang('register.attributes.documentNumber')</label>
+									<div class="col-md-6">
+										<input class="form-control input-sm" name="documentNumber" type="text" />
+									</div>
+								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">Disciplina </label>
 									<div class="col-md-6">
@@ -157,25 +187,7 @@
 										</select>
 									</div>
 								</div>
-								
-								
-								
 
-								<div class="form-group">
-									<label class="col-md-4 control-label">@lang('register.attributes.documentType')</label>
-									<div class="col-md-6 selectContainer">
-										<select name="documentType" class="form-control input-sm documentType">
-											<option value="1">DNI</option>
-											<option value="2">Pasaporte de Extranjería</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-4 control-label">@lang('register.attributes.documentNumber')</label>
-									<div class="col-md-6">
-										<input class="form-control input-sm" name="documentNumber" type="text" />
-									</div>
-								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label">@lang('register.attributes.cellphone')</label>
 									<div class="col-md-6">
@@ -302,62 +314,140 @@
 		var objTotalCost=$('.totalCost');
 		var num =1;
 		var idCostSelected='';
+		var costtypeSelected=0;
+		var payTicket=[];
+		var currentUserItem={};
+
+		var opcDisciplineAvalible=['Natación','Ciclismo','Maraton'];
 		$('.btnAddUser').click(function(){
-			if (num==1) {$('.tbodyUserAdded').empty();}
-			var op=$('.discipline').val();
-			var  fullname =$('.fullName').val()+ ' '+$('.lastName').val();
-			$('.tbodyUserAdded').append('<tr class="trUserAdded"><td>'+num+'</td><td>'+fullname+'</td><td>'+op+'</td></tr>');
+			var  fullName =$('.fullName').val() ;
+			var  lastName = $('.lastName').val();
+			addUserItemTable(fullName,lastName);
+		});
+
+	function addUserItemTable(fullName,lastName){
+	if (num==1) {$('.tbodyUserAdded').empty();}
+			var op=$('.discipline :selected').text();
+			
+			$('.tbodyUserAdded').append('<tr class="trUserAdded"><td>'+num+'</td><td>'+fullName+' '+lastName+'</td><td>'+op+'</td></tr>');
 			num++;
 
 			$(".discipline option[value='"+op+"']").remove();
 			$(".formUserRegister")[0].reset();
-		});
+}
+
 
 		function calcTotalCostByEvent(itemQuantity,itemPrice){
 			return itemQuantity*itemPrice;
 		}
-					function calculateTotalCost(objOptionRadios){
-								/*Calcular costo total*/
-								objTotalCost.empty();
-								unitCost= objOptionRadios.parents('tr').find($('.totalITem')).text();
-								objTotalCost.append(unitCost);
-					}
+		function calculateTotalCost(objOptionRadios){
+			/*Calcular costo total*/
+			objTotalCost.empty();
+			unitCost= objOptionRadios.parents('tr').find($('.totalITem')).text();
+			objTotalCost.append(unitCost);
+		}
 
-					function setItemValue (objOptionRadios){
-							
-								var costtype= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
-
-							calculateTotalCost(objOptionRadios);
-								 
-									idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
-						 
-								if (costtype===2) {
-									$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);
+		function setItemValue (objOptionRadios){
+			costtypeSelected= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
+			calculateTotalCost(objOptionRadios);
+			idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
+			/*dinamical view by CostType*/aditionalDataViewByCostType(costtypeSelected);
+		}
+		function aditionalDataViewByCostType(costtype){
+			if (costtype===2) {
+				$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);
+			}
+		}
+		function setTicketValues(objSpinner){
+			var itemQuantity=objSpinner.spinner( "value" );
+			var itemPrice=objSpinner.parents('tr').find($('.itemPrice')).val();
+			totalCost =calcTotalCostByEvent(itemQuantity,itemPrice);
+			objSpinner.parents('tr').find($('.totalITem')).text(totalCost);
+			calculateTotalCost(objSpinner);
+		}
+		function initUserDataForm(){
+			$('.optionsRadios').click(function(){
+				var objOptionRadios =$('.optionsRadios');
+				var costtype= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
+				//aditionalDataViewByCostType(costtype);
+			});
+			$('.documentNumberSearch').change(function (){
+				var documentNumber =$(this).val();
+				var data ={
+					'documentNumber':documentNumber
+				}
+				$('.btnInconDocumentSearch').empty();
+				$('.btnInconDocumentSearch').append('<button class="btn btn-default" type="button"><i class="fa fa-spinner fa-spin"></i></button>');
+				$.ajax({
+					url:'findUserDataByDocummentNumber',data:data,type:'GET',success:function(data){
+						if (data.searchStatus) {
+							$('.userDataItem').empty();
+							  var fullName =data.data.userData.fullName;
+							  var lastName =data.data.userData.lastName;
+							var user =data.data.userData.fullName +' '+data.data.userData.lastName;
+							currentUserItem ={fullName,lastName};
+							console.log(currentUserItem);
+							$('.userDataRegister').hide();
+							$('.btnInconDocumentSearch').empty();
+							$('.btnInconDocumentSearch').append('<button class="btn btn-default btnAddUserItem" type="button"><i class="fa fa-plus"></i></button>');
+							if (data.data.userData.isEnabled) {
+								$('.userDataItem').empty();
+								$('.userDataItem').append('<i class="fa fa-user"></i> '+user+' <span class="label label-primary">Disponible</span>');
+								$('.disciplineItem').empty();	
+								var opc ='';
+								for (var i = 0; i <opcDisciplineAvalible.length; i++) {
+									opc +='<option value="'+i+'">'+opcDisciplineAvalible[i]+'</option>';
 								}
+								console.log(opc);
+								$('.disciplineItem').append('<select name="discipline" class="form-control discipline" multiple="multiple" style="width: 100%;">'+opc+'	</select>');
+
+								$('.discipline').select2({
+									maximumSelectionLength: 2,
+									placeholder: "Disciplina"
+								});
+								
+								$('.btnAddUserItem').click(function(){
+		  								var arr = []; 
+		  								var c=0;
+										$('.discipline :selected').each(function(i, selected){ 
+										  arr[i] = $(selected).text(); 
+										  console.log('value:'+$(selected).val());
+											opcDisciplineAvalible.splice($(selected).val()-c,1);
+											c++;
+										});
+										console.log('new opc',opcDisciplineAvalible);
+
+								addUserItemTable(currentUserItem.fullName,currentUserItem.lastName);
+								 
+									$('.documentNumberSearch').val("");
+									$('.userDataItem').empty();
+									$('.disciplineItem').empty();
+								});
+							}else{
+								$('.userDataItem').append('<i class="fa fa-user"></i> '+user+'  <span class="badge">No disponible </span>');
+							}
+						}else{
+
+							$('.userDataRegister').show();
+							$('.userDataItem').empty();
+							$('.btnInconDocumentSearch').empty();
+							console.log('no se encontro el usuario');
+
+						}
 					}
-				function setTicketValues(objSpinner){
-					var itemQuantity=objSpinner.spinner( "value" );
-					var itemPrice=objSpinner.parents('tr').find($('.itemPrice')).val();
-					totalCost =calcTotalCostByEvent(itemQuantity,itemPrice);
-					objSpinner.parents('tr').find($('.totalITem')).text(totalCost);
-					calculateTotalCost(objSpinner);
-				}
-				function initUserDataForm(){
-					$('.discipline').select2();
-				}
+				});
+			});
+		}
 
 		function initTickesEventElements(objItemQuantity,objOptionRadios){
 			for (var i = 0; i < objItemQuantity.length; i++) {
 				var max =$( ".itemQuantity"+i ).data('valuemax');
-
-					//setTicketValues($( ".itemQuantity"+i )); 
-					$(".optionsRadios"+i).click(function(){
-
+				$(".optionsRadios"+i).click(function(){
 					var objOptionRadios =$(this);
 					setItemValue(objOptionRadios);
 					var item =$(this).val();
 					setTicketValues($( ".itemQuantity"+item )); 
-					});
+				});
 
 				$( ".itemQuantity"+i ).spinner({
 					min:0,  
@@ -371,10 +461,10 @@
 					}
 				});
 				if (i === 0) {
-						setItemValue($(".optionsRadios"+i));
-						setTicketValues($( ".itemQuantity"+i )); 
-						 
-					}
+					setItemValue($(".optionsRadios"+i));
+					setTicketValues($( ".itemQuantity"+i )); 
+
+				}
 			}	
 
 		}
@@ -408,11 +498,11 @@
 						hs += '  <label class="form-check-label">';
 						if (i===0) {
 
-						hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  checked="checked" value="'+i+'">';
+							hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  checked="checked" value="'+i+'">';
 						}else{
-						hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="'+i+'">';
+							hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="'+i+'">';
 						}
-					
+
 						hs += '  </label>';
 						hs += '  </div>';
 						hs += ' </td>';
@@ -476,9 +566,9 @@
 					$.ajax({
 						url:'payTicket',type:'POST',data:data,
 						success:function(data){
-								if (data.submitStatus) {
-									window.location="payTicketSuccess";
-								}
+							if (data.submitStatus) {
+								window.location="payTicketSuccess";
+							}
 						}
 					});
 				});
