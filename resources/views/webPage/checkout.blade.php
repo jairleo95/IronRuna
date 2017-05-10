@@ -70,7 +70,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label">Disciplina </label>
 									<div class="col-md-6">
-										<select name="discipline" class="form-control input-sm discipline" multiple="multiple">
+										<select name="discipline" class="form-control input-sm discipline" multiple="multiple" style="width: 100%;">
 											<option value="Natación">Natación</option>
 											<option value="Ciclismo">Ciclismo</option>
 											<option value="Maraton">Maraton</option>
@@ -343,7 +343,9 @@
 					calculateTotalCost(objSpinner);
 				}
 				function initUserDataForm(){
-					$('.discipline').select2();
+					$('.discipline').select2({
+						  maximumSelectionLength: 2
+					});
 				}
 
 		function initTickesEventElements(objItemQuantity,objOptionRadios){
