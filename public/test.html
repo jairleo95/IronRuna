@@ -1,0 +1,38 @@
+
+
+    <p class="demo"></p>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+  	
+var lookup = {
+    'name': 'nnnnnnnn',
+    'description': 'dddddddd',
+    'users': 
+    [
+    {
+        'name': 'Jair Santos',
+        'birthdate': '12-12-1990',
+        'phone': '99999999'
+    },
+    {
+        'name': 'YYYY DDDD',
+        'birthdate': '12-12-2000',
+        'phone': '888888'
+    }
+    ]	
+};
+$.ajax({
+	url:'test',
+    type: 'GET',
+    data:  lookup,
+    contentType: 'application/json',
+    dataType: 'json'
+});
+console.log(lookup)
+$('.demo').text(lookup);
+  </script>
+

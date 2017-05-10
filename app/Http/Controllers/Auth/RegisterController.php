@@ -100,10 +100,50 @@ class RegisterController extends Controller
         return $userData;
     }
     public function successRegisterMessage() {
-
-
        return view('emails.subscriber.successSubscriber');
     }
+        public function findUserDataByDocummentNumber(Request $request){
+            $users =$this->getUserDataByDocummentNumer($request->documentNumber);
+             
+            if ($users==null) {
+                # code...
+                 $data =['searchStatus'=>false,'isEnabled'=>true];
+            }else{
+                  $data =[
+                     'searchStatus'=>true,
+                     'data' =>  [
+                            'userData'=> [
+                            'fullName'=>$users->fullName,
+                            'lastName'=>$users->lastName,
+                            'idUser'=>encrypt($users->idUserData),
+                            'isEnabled'=>true
+                            ]
+                    ]
+
+                ];
+            }
+            return response()->json($data);
+        }    
+protected function getUserDataByDocummentNumer ($documentNumber){
+    $user = DB::table('userData')->where('documentNumber', $documentNumber)->first();
+    
+     return $user;
+}
+
+public function test(Request $request){
+    //dd($request->input('users'));
+   
+     $users =$request->input('users');
+
+     $size =  (count($users));
+     for ($r=0; $r < $size; $r++) { 
+         # code...
+        print_r( $users[$r]['name']);
+     }
+
+            
+    
+}
     public function subscriberUser(Request $request){
         $token=str_random(100);
         $this->create(
