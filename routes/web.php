@@ -17,6 +17,7 @@ Route::get('testQuery','Auth\LoginController@testQuery');
 
 /**end test routes*/
 
+Route::get('allCountries','CountryController@allCountries');
 Route::get('getAllPostedEvtens','EventController@getAllEvent');
 Route::get('validateEventInscription','EventController@validateEventInscription');
 

@@ -330,25 +330,29 @@ function formResetValues(ObjForm) {
 function calcularEdad(fechaNacimiento) {
 /*Fecha innput */
     /* format 2016-12-11 yyyy-mm-dd*/
-    var fechaActual = new Date();
-    var diaActual = fechaActual.getDate();
-    var mmActual = fechaActual.getMonth() + 1;
-    var yyyyActual = fechaActual.getFullYear();
-    var FechaNac = fechaNacimiento.split("/");
-    var diaCumple = FechaNac[0];
-    var mmCumple = FechaNac[1];
-    var yyyyCumple = FechaNac[2];
-    //retiramos el primer cero de la izquierda
-    if (mmCumple.substr(0, 1) == 0) {
-        mmCumple = mmCumple.substring(1, 2);
+     var edad=0;
+    if (typeof fechaNacimiento!=='undefined'& fechaNacimiento!=='') {
+        var fechaActual = new Date();
+            var diaActual = fechaActual.getDate();
+            var mmActual = fechaActual.getMonth() + 1;
+            var yyyyActual = fechaActual.getFullYear();
+            var FechaNac = fechaNacimiento.split("/");
+            var diaCumple = FechaNac[0];
+            var mmCumple = FechaNac[1];
+            var yyyyCumple = FechaNac[2];
+            //retiramos el primer cero de la izquierda
+            if (mmCumple.substr(0, 1) == 0) {
+                mmCumple = mmCumple.substring(1, 2);
+            }
+            if (diaCumple.substr(0, 1) == 0) {
+                diaCumple = diaCumple.substring(1, 2);
+            }
+             edad = yyyyActual - yyyyCumple;
+            if ((mmActual < mmCumple) || (mmActual == mmCumple && diaActual < diaCumple)) {
+                edad--;
+            }
     }
-    if (diaCumple.substr(0, 1) == 0) {
-        diaCumple = diaCumple.substring(1, 2);
-    }
-    var edad = yyyyActual - yyyyCumple;
-    if ((mmActual < mmCumple) || (mmActual == mmCumple && diaActual < diaCumple)) {
-        edad--;
-    }
+    
     console.log("EDAD:" + edad);
     return edad;
 }
@@ -426,7 +430,7 @@ function listSelectAjaxWithJavaBeans(objSelect, url, datos, id_select, opcion_se
     objSelect.empty();
     objSelect.removeClass("chosen-select");
     objSelect.append("<option  value='' >Cargando...</option>");
-    $.post(url, datos, function (data) {
+    $.get(url, datos, function (data) {
         /*objJson = JSON.parse(objJson);*/
         objSelect.empty();
         if (!data.status) {
