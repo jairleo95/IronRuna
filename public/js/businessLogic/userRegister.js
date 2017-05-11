@@ -4,6 +4,20 @@
                 locale: 'es',
                 format: 'D/MM/YYYY'
             });
+            listSelectAjaxWithJavaBeans($('.country'), 'allCountries', '', 'id', 'name', '2', '', function(){
+                                
+                            });
+                            $('.country').change(function(){
+                                listSelectAjaxWithJavaBeans($('.department'),'regionsByCountry','idCountry='+$(this).val(),'id','name','1','',function(){
+                                });
+                            });
+
+                            $('.department').change(function(){
+                                listSelectAjaxWithJavaBeans($('.district'),'cityByRegion',
+                                    'idRegion='+$(this).val(),'id','name','1','',function(){
+                                });
+                            });
+
             $('.formUserRegister').bootstrapValidator({
                 message: 'Este valor es inválido',
                 framework : 'bootstrap',
