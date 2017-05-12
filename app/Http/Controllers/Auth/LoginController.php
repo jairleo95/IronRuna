@@ -55,6 +55,12 @@ class LoginController extends Controller
     public function findUserDataByUserName($user){
         return DB::select('select * from userData where userName = ?', [$user]);
     }
+
+    public function getCurrentUserData(Request $req){
+        dd($req->userName);
+        $data =$this->findUserDataByUserName($req->userName);
+    }
+
     public function isValidUserName(Request $req){
         $userData=$this->findUserDataByUserName($req->email);
 

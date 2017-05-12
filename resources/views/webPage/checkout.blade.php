@@ -295,7 +295,7 @@
 
 					<p>Declaro bajo juramento que no padezco afecciones físicas adquiridas o congénitas, ni lesiones que pudieran ocasionar trastornos en mi salud o condiciones de vida, como consecuencia de participar en la presente competencia. Asimismo declaro bajo juramento que antes de realizar la competencia me he realizado un chequeo médico y me encuentro en condiciones físicas óptimas para participar en la misma, asimismo asumo todos los riesgos asociados con la participación en la presente competencia.  Tomo conocimiento y acepto voluntariamente, que IRONRUNA y los Sponsors NO toman a su cargo ni se responsabilizan por ningún tipo de indemnización, reclamo, costo, daño y/o perjuicio reclamado, en lo concerniente  a, daños por accidentes, daños materiales, físicos o psíquicos o morales, causados hacia mi persona, con motivo y en ocasión de la competencia en la que participaré. Habiendo  leído  esta declaración  y  conociendo  estos hechos, libero  a IRONRUNA de todo  y  cualquier reclamo  o  responsabilidad  de cualquier tipo  que surja de mi participación  en  este evento  aunque esta responsabilidad pueda surgir por negligencia o culposidad de parte de las personas nombradas en esta declaración, así como de cualquier extravío, robo y/o hurto que pudiera sufrir. Como  así también  manifiesto  que no serán  responsables por incendios, cortocircuitos, robos, hurtos, caso  fortuito, cualquiera fuera la causa que lo  origine, daño  en  mi salud  provenientes de riñas o  peleas de terceros, daño  en  mi salud proveniente de afecciones físicas o no, que puedan acontecer con anterioridad, durante el transcurso o con posterioridad a la finalización de la competencia. Autorizo a los organizadores de la competencia y sponsor a utilizar, reproducir, distribuir y/o publicar fotografías, películas, videos, grabaciones y/o cualquier otro medio de registración de mi persona tomadas con motivo y en ocasión de la presente competencia, sin compensación económica alguna a  favor del participante de la presente competencia. 
 					</p>
-					<p>Por la presente, declaro tener __________ años de edad, y haber leído este documento y entendido su contenido.</p>
+					<p>Por la presente, declaro tener <span class="ageCurrentUser"></span> años de edad, y haber leído este documento y entendido su contenido.</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btnAccept" data-dismiss="modal">Aceptar</button>
@@ -322,6 +322,12 @@
 		var currentUserItem={};
 
 		var opcDisciplineAvalible=['Natación','Ciclismo','Maraton'];
+		$.ajax({
+			url:'getCurrentUserData',data:'',type:'POST',success:function(data){
+			if (data.session) {}
+			console.log(data);
+			}
+		});
 		
 		function manageUserByTicket(documentNumber){
 			console.log('enter to function manageUserByTicket')

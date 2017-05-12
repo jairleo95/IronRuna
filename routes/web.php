@@ -21,6 +21,10 @@ Route::get('allCountries','CountryController@allCountries');
 Route::get('getAllPostedEvtens','EventController@getAllEvent');
 Route::get('validateEventInscription','EventController@validateEventInscription');
 
+
+Route::get('getCurrentUserData','Auth\LoginController@getCurrentUserData');
+
+
 Route::get('main',['as' => 'main', 'uses' => 'Auth\AuthController@home']);
 
 Route::get('message', function () {
