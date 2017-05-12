@@ -19,7 +19,7 @@
 
 
 
-    <link href="css/plugins/owlcarousel/owl.carousel.css"rel="stylesheet">
+    <link href="css/plugins/owlcarousel/owl.carousel.css" rel="stylesheet">
     <link href="css/plugins/owlcarousel/owl.theme.default.css" rel="stylesheet"  >
 
     <link href="css/icomoon.css" rel="stylesheet" type="text/css">
