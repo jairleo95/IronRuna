@@ -57,8 +57,12 @@ class LoginController extends Controller
     }
 
     public function getCurrentUserData(Request $req){
-        dd($req->userName);
-        $data =$this->findUserDataByUserName($req->userName);
+
+        $data =$this->findUserDataByUserName($req->session()->get('userName'));
+       return response()->json([
+            'userData' => $data[0],
+            'session' => true
+        ]);
     }
 
     public function isValidUserName(Request $req){

@@ -327,16 +327,16 @@ function formResetValues(ObjForm) {
     ObjForm[0].reset();
     opc = "save"
 }
-function calcularEdad(fechaNacimiento) {
+function calcularEdad(fechaNacimiento,splitCharacter) {
 /*Fecha innput */
-    /* format 2016-12-11 yyyy-mm-dd*/
+    /* format input dd-mm-yyyy 1995-07-08*/
      var edad=0;
     if (typeof fechaNacimiento!=='undefined'& fechaNacimiento!=='') {
         var fechaActual = new Date();
             var diaActual = fechaActual.getDate();
             var mmActual = fechaActual.getMonth() + 1;
             var yyyyActual = fechaActual.getFullYear();
-            var FechaNac = fechaNacimiento.split("/");
+            var FechaNac = fechaNacimiento.split(splitCharacter);
             var diaCumple = FechaNac[0];
             var mmCumple = FechaNac[1];
             var yyyyCumple = FechaNac[2];

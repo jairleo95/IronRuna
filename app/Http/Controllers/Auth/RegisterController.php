@@ -132,14 +132,17 @@ protected function getUserDataByDocummentNumer ($documentNumber){
 
 public function test(Request $request){
     //dd($request->input('users'));
-   
+  /* 
      $users =$request->input('users');
 
      $size =  (count($users));
      for ($r=0; $r < $size; $r++) { 
          # code...
         print_r( $users[$r]['name']);
-     }
+     }*/
+$mails = new MailController();
+$mails->sendMultipleMails($request);
+
 
             
     

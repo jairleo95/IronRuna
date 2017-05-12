@@ -200,7 +200,7 @@ documentNumber:{
         callback: {
             message: 'Su edad es menor a 18 años',
             callback: function(data){
-                var age = calcularEdad(data);
+                var age = calcularEdad(data,'/');
                 return (age<18?false:true);
             }
         }

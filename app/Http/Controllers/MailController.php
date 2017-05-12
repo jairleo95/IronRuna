@@ -42,4 +42,22 @@ class MailController extends Controller
               
               
     }
+        public  function sendMultipleMails(Request $req){
+          //  dd($req->emails);
+        //    $emails = ['jairleo95@gmail.com', 'jairsantos@upeu.edu.pe'];
+            $emails =$req->emails;
+    
+                    \Mail::send('emails.registerEventMessage', $emails, function($message) use ($emails) {
+                                //remitente
+                                $message->to($emails, 'Nombree');
+                                //asunto
+                                $message->subject(' Usted ha separado su ticket');
+                                //receptor
+                             $message->from(env('MAIL_USERNAME'), env('MAIL_NAME'));
+                    });
+                   
+              
+              
+    }
+
 }
