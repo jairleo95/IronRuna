@@ -242,7 +242,7 @@
                 <!-- end filter -->
                 <div id="portfolio-content" class="portfolio-content isotope">
                     <article class="gallery-item col-sm-4 spring">
-                        <a href="images/img2.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/img2.jpg" alt="image description"></a>
+                        <a href="images/custom/33.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/33.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">
@@ -251,7 +251,7 @@
                         </a>
                     </article>
                     <article class="gallery-item col-sm-4 summer">
-                        <a href="images/img3.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/img3.jpg" alt="image description"></a>
+                        <a href="images/custom/2.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/3.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">
@@ -278,7 +278,7 @@
                         </a>
                     </article>
                     <article class="gallery-item col-sm-4 spring">
-                        <a href="images/img6.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/img6.jpg" alt="image description"></a>
+                        <a href="images/custom/7.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/7.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">
@@ -287,7 +287,7 @@
                         </a>
                     </article>
                     <article class="gallery-item col-sm-4 summer">
-                        <a href="images/img7.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/img7.jpg" alt="image description"></a>
+                        <a href="images/custom/13.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/13.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">

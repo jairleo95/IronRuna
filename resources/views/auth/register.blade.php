@@ -18,10 +18,10 @@
 				<ul class="nav nav-tabs text-center">
 
 					<li class="active col-md-6" style="padding: 0px;">
-						<a  href="#1" data-toggle="tab" style="font-size: 22px">Registrate</a>
+						<a  href="#1" data-toggle="tab" style="font-size: 22px">Ingresa</a>
 					</li>
 					<li class="col-md-6" style="padding: 0px;">
-					<a href="#2" data-toggle="tab" style="font-size: 22px">Ingresa</a>
+					<a href="#2" data-toggle="tab" style="font-size: 22px">Registrate</a>
 					</li>
 				</ul>
 

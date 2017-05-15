@@ -1,0 +1,55 @@
+
+<div  class="well well-light">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-4"><label>Evento :</label> <label class="">Perú 2017 Lima - Half Iron Runa</label></div>
+			<div class="col-md-4"><label>Tipo :</label><label> Postas</label></div>
+			<div class="col-md-4"><label>Monto Total:</label> <label>S/. 250.00</label></div>
+			<br><br>
+			<div class="col-md-12">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Número de deposito">
+					<span class="input-group-btn">
+
+						<button class="btn btn-default btn-success btnRegisterDepositNumber" type="button"  title="Enviar" >	<i class="fa fa-send"></i>
+						</button>
+					</span>
+				</div><!-- /input-group -->
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<input type="hidden" class="eventSelected" value="{{ session('eventSelected')}}" >
+	
+
+	<script type="text/javascript">
+	
+
+			var idEvent=$('.eventSelected').val();
+			$('.btnRegisterDepositNumber').tooltip({
+				content: "Enviar!", 
+				classes: {
+					"ui-tooltip": "highlight"
+				}
+			});   
+			var data={
+				'idEvent':idEvent
+			};
+	$.ajax({
+		url:'getPayCurrentUser',data:data,type:'get',
+		success:function(data){
+			if (data.status) {
+
+			}else{
+
+			}
+		}
+	});
+
+
+</script>

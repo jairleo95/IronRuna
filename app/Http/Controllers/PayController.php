@@ -55,4 +55,17 @@ class PayController extends Controller
                         ]);
     }
 
+    public function payTicketFinalStep (){
+         return view('pay.registerDepositNumber');
+    }
+    public function getPayCurrentUser(Request $request){
+          $user=$request->session()->get('userName');
+          $query =" SELECT p.idPay,e.tittle,p.totalCost,c.name  FROM userDataPay up , cost c , userData u, pay p , ironruna.event e WHERE e.idEvent=c.idEvent AND  p.recordStatus=1 AND e.recordStatus=1 AND  up.idCost =c.idCost AND u.idUserData=up.idUserData  AND p.idPay=up.idPay AND up.recordStatus=1 AND c.idEvent=? AND u.userName=? ";
+        $rpta= DB::select($query, [decrypt($request->idEvent), $user]);
+         return response()->json([
+            'data' => $rpta,
+            'status'=>true
+        ]);
+    }
+
 }

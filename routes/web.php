@@ -166,6 +166,20 @@ Route::get('payTicketSuccess', [
 ]);
 
 
+
+Route::get('payTicketFinalStep', [
+    'uses'=>'PayController@payTicketFinalStep',
+    'as'=>'payTicketFinalStep'
+]);
+
+
+Route::get('getPayCurrentUser', [
+    'uses'=>'PayController@getPayCurrentUser',
+    'as'=>'getPayCurrentUser'
+]);
+
+
+
 Route::get('checkout/{id}', 'PayController@checkoutAccess');
 Route::get('getCostByEvent','CostController@costByEvent');
 Route::get('my-account', function () {
