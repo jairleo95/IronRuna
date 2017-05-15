@@ -7,6 +7,11 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
+<style type="text/css">
+.formUserRegister .tab-content {
+    margin-top: 20px;
+}
+</style>
 
 @endsection
 @section('content')
@@ -41,7 +46,7 @@
 				<div class="cart-foot row">
 					<div class="col-sm-6">
 
-						<img src="images/payment-card-icon.png">
+				 
 					</div>
 					<div class="col-sm-3">
 						<strong class="pull-right">Total del pedido</strong>
@@ -214,7 +219,7 @@
 										
 										
 									</div>
-									<div class="tab-pane active"  id="step-3">
+									<div class="tab-pane"  id="step-3">
 										<!--Aditional data-->
 										<div class="form-group">
 											<label class="col-md-4 control-label">@lang('register.attributes.category')</label>
@@ -236,9 +241,9 @@
 												<input type="text" class="form-control input-sm" name="emergencyPhone">
 											</div>
 										</div>
-										<button type="button" class="btn btn-success pull-right btnAddUser">
+										<!--<button type="button" class="btn btn-success pull-right btnAddUser">
 											Agregar <i class="fa fa-plus"></i>
-										</button>
+										</button>-->
 									</div>
 
 									<!-- Previous/Next buttons -->
@@ -365,9 +370,11 @@
 			url:'getCurrentUserData',data:'',type:'get',success:function(data){
 				if (data.session) {
 					var birthdate=data.userData.birthdate;
+					var email=data.userData.email;
 					currentUserData={
 						'userData':{
-							'birthdate':birthdate
+							'birthdate':birthdate,
+							'email':email,
 						}
 					};
 
@@ -378,12 +385,12 @@
 		});
 
 		function validateTab(index) {
-        var fv   = $('.formUserRegister').data('bootstrapValidator'), // FormValidation instance
+        var fv   = $('.formUserRegister').data('formValidation'), // FormValidation instance
             // The current tab
             $tab = $('.formUserRegister').find('.tab-pane').eq(index);
 
         // Validate the container
-        fv.validate();
+        //fv.validate();
         fv.validateContainer($tab);
 
         var isValidStep = fv.isValidContainer($tab);
@@ -461,71 +468,17 @@
 							$('.userDataItem').empty();
 							$('.inputDocumentSearch').empty();
 
-							var btnAddNewUser='<button class="newUser pull-right btn btn-primary"><i class="fa fa-user-plus"></i></button>'
+							var btnAddNewUser='<button class="newUser pull-right btn btn-primary"><i class="fa fa-plus"></i></button>'
 							$('.inputDocumentSearch').html(btnAddNewUser);
 							$('.newUser').click(function(){
 								$('.userDataRegister').show(200);
 								$('.searchMessage').empty();
 
 								loadFormPlugins(function(){
-									$.loadScript('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js',function(){
-										var formRegisterUser =initFormUserRegister();
-										formRegisterUser.bootstrapWizard({
-											tabClass: 'nav nav-pills',
-											onTabClick: function(tab, navigation, index) {
-												return validateTab(index);
-											},
-											onNext: function(tab, navigation, index) {
-												var numTabs    = $('.formUserRegister').find('.tab-pane').length,
-												isValidTab = validateTab(index - 1);
-												if (!isValidTab) {
-													return false;
-												}
-
-												if (index === numTabs) {
-                    // We are at the last tab
-
-                    // Uncomment the following line to submit the form using the defaultSubmit() method
-                    // $('#installationForm').formValidation('defaultSubmit');
-
-                    // For testing purpose
-                    $('#completeModal').modal();
-                }
-
-                return true;
-            },
-            onPrevious: function(tab, navigation, index) {
-            	return validateTab(index + 1);
-            },
-            onTabShow: function(tab, navigation, index) {
-                // Update the label of Next button when we are at the last tab
-                var numTabs = $('#installationForm').find('.tab-pane').length;
-                $('#installationForm')
-                .find('.next')
-                        .removeClass('disabled')    // Enable the Next button
-                        .find('a')
-                        .html(index === numTabs - 1 ? 'Install' : 'Next');
-
-                // You don't need to care about it
-                // It is for the specific demo
-               // adjustIframeHeight();
-           }
-       });
-
-									});
-									
+									initWizardUserDataRegister();
 								});							
 
-								$('.btnAddUser').click(function(){
-									console.log('adasd');
-									console.log('validating..'+$('.formUserRegister').data('bootstrapValidator').validate());
-							//if ($('.formUserRegister').validate()) {
-								var  fullName =$('.fullName').val() ;
-								var  lastName = $('.lastName').val();
-								addUserItemTable(fullName,lastName);
-								//	}
-
-							});
+								 
 
 							});
 							$('.searchMessage').html('<div class="col-md-12"><div class="alert alert-warning"> No se encontró ningun usuario. </div></div>');
@@ -535,189 +488,241 @@
 						}
 					}
 				});
-}
+    }
 
-function addUserItemTable(fullName,lastName){
-	if (num==1) {$('.tbodyUserAdded').empty();}
-	var op=$('.discipline :selected').text();
+    function initWizardUserDataRegister(){
 
-	$('.tbodyUserAdded').append('<tr class="trUserAdded"><td>'+num+'</td><td>'+fullName+' '+lastName+'</td><td>'+op+'</td></tr>');
-	num++;
+    	$.loadScript('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js',function(){
+    		var formRegisterUser =initFormUserRegister();
 
-	$(".discipline option[value='"+op+"']").remove();
-	$(".formUserRegister")[0].reset();
-}
+    		formRegisterUser.bootstrapWizard({
+    			tabClass: 'nav nav-pills',
+    			onTabClick: function(tab, navigation, index) {
+    				return validateTab(index);
+    			},
+    			onNext: function(tab, navigation, index) {
+    				var numTabs    = $('.formUserRegister').find('.tab-pane').length,
+    				isValidTab = validateTab(index - 1);
+    				if (!isValidTab) {
+    					return false;
+    				}
+
+    				if (index === numTabs) {
+                    // We are at the last tab
+
+                    // Uncomment the following line to submit the form using the defaultSubmit() method
+                    // $('#installationForm').formValidation('defaultSubmit');
+
+                    // For testing purpose
+                    alert("Formulario completooo!!!")
+                    var  fullName =$('.fullName').val() ;
+                    var  lastName = $('.lastName').val();
+                    addUserItemTable(fullName,lastName);
+                }
+
+                return true;
+            },
+            onPrevious: function(tab, navigation, index) {
+            	return validateTab(index + 1);
+            },
+            onTabShow: function(tab, navigation, index) {
+                // Update the label of Next button when we are at the last tab
+                var numTabs = $('.formUserRegister').find('.tab-pane').length;
+                $('.formUserRegister')
+                .find('.next')
+                        .removeClass('disabled')    // Enable the Next button
+                        .find('a')
+                        .html(index === numTabs - 1 ? 'Agregar' : 'Next');
+
+                // You don't need to care about it
+                // It is for the specific demo
+               // adjustIframeHeight();
+           }
+       });
+
+    	});
+    }
+    function addUserItemTable(fullName,lastName){
+    	if (num==1) {$('.tbodyUserAdded').empty();}
+    	var op=$('.discipline :selected').text();
+
+    	$('.tbodyUserAdded').append('<tr class="trUserAdded"><td>'+num+'</td><td>'+fullName+' '+lastName+'</td><td>'+op+'</td></tr>');
+    	num++;
+
+    	$(".discipline option[value='"+op+"']").remove();
+    	$(".formUserRegister")[0].reset();
+    }
 
 
-function calcTotalCostByEvent(itemQuantity,itemPrice){
-	return itemQuantity*itemPrice;
-}
-function calculateTotalCost(objOptionRadios){
-	/*Calcular costo total*/
-	objTotalCost.empty();
-	unitCost= objOptionRadios.parents('tr').find($('.totalITem')).text();
-	objTotalCost.append(unitCost);
-}
+    function calcTotalCostByEvent(itemQuantity,itemPrice){
+    	return itemQuantity*itemPrice;
+    }
+    function calculateTotalCost(objOptionRadios){
+    	/*Calcular costo total*/
+    	objTotalCost.empty();
+    	unitCost= objOptionRadios.parents('tr').find($('.totalITem')).text();
+    	objTotalCost.append(unitCost);
+    }
 
-function setItemValue (objOptionRadios){
-	costtypeSelected= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
-	calculateTotalCost(objOptionRadios);
-	idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
-	/*dinamical view by CostType*/
-	aditionalDataViewByCostType(costtypeSelected);
-}
-function aditionalDataViewByCostType(costtype){
-	if (costtype===2) {
-		$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);
-	}
-}
-function setTicketValues(objSpinner){
-	var itemQuantity=objSpinner.spinner( "value" );
-	var itemPrice=objSpinner.parents('tr').find($('.itemPrice')).val();
-	totalCost =calcTotalCostByEvent(itemQuantity,itemPrice);
-	objSpinner.parents('tr').find($('.totalITem')).text(totalCost);
-	calculateTotalCost(objSpinner);
-}
+    function setItemValue (objOptionRadios){
+    	costtypeSelected= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
+    	calculateTotalCost(objOptionRadios);
+    	idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
+    	/*dinamical view by CostType*/
+    	aditionalDataViewByCostType(costtypeSelected);
+    }
+    function aditionalDataViewByCostType(costtype){
+    	if (costtype===2) {
+    		$('.aditionalData').show(200);}else{$('.aditionalData').hide(200);
+    	}
+    }
+    function setTicketValues(objSpinner){
+    	var itemQuantity=objSpinner.spinner( "value" );
+    	var itemPrice=objSpinner.parents('tr').find($('.itemPrice')).val();
+    	totalCost =calcTotalCostByEvent(itemQuantity,itemPrice);
+    	objSpinner.parents('tr').find($('.totalITem')).text(totalCost);
+    	calculateTotalCost(objSpinner);
+    }
 
-function initUserDataForm(){
-	console.log(' enter to function initUserDataForm');
-	var btnSearcStatus='search';
+    function initUserDataForm(){
+    	console.log(' enter to function initUserDataForm');
+    	var btnSearcStatus='search';
 
 
-	$('.documentNumberSearch').change(function (){
-		console.log("entero to change")
-		var documentNumber =$(this).val();
-		manageUserByTicket(documentNumber)
+    	$('.documentNumberSearch').change(function (){
+    		console.log("entero to change")
+    		var documentNumber =$(this).val();
+    		manageUserByTicket(documentNumber)
 
-	});
-	$('.optionsRadios').click(function(){
-		var objOptionRadios =$('.optionsRadios');
-		var costtype= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
+    	});
+    	$('.optionsRadios').click(function(){
+    		var objOptionRadios =$('.optionsRadios');
+    		var costtype= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
 				//aditionalDataViewByCostType(costtype);
 			});
-	$('.inputDocumentSearch').append('<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>');
-	$('.btnAddUserItem').click(function(){
+    	$('.inputDocumentSearch').append('<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>');
+    	$('.btnAddUserItem').click(function(){
 
-		var documentNumber =$('.inputDocumentSearch').val();
-		manageUserByTicket(documentNumber)
-	});
+    		var documentNumber =$('.inputDocumentSearch').val();
+    		manageUserByTicket(documentNumber)
+    	});
 
-}
+    }
 
-function initTickesEventElements(objItemQuantity,objOptionRadios){
-	for (var i = 0; i < objItemQuantity.length; i++) {
-		var max =$( ".itemQuantity"+i ).data('valuemax');
-		$(".optionsRadios"+i).click(function(){
-			var objOptionRadios =$(this);
-			setItemValue(objOptionRadios);
-			var item =$(this).val();
-			setTicketValues($( ".itemQuantity"+item )); 
-		});
+    function initTickesEventElements(objItemQuantity,objOptionRadios){
+    	for (var i = 0; i < objItemQuantity.length; i++) {
+    		var max =$( ".itemQuantity"+i ).data('valuemax');
+    		$(".optionsRadios"+i).click(function(){
+    			var objOptionRadios =$(this);
+    			setItemValue(objOptionRadios);
+    			var item =$(this).val();
+    			setTicketValues($( ".itemQuantity"+item )); 
+    		});
 
-		$( ".itemQuantity"+i ).spinner({
-			min:0,  
-			max: max,            
-			down: "ui-icon-plus",
-			up: "ui-icon-minus",
-			change: function( event, ui ) {
-				setTicketValues($(this)); 
-			},spin: function( event, ui ) {
-				setTicketValues($(this)); 
-			}
-		});
-		if (i === 0) {
-			setItemValue($(".optionsRadios"+i));
-			setTicketValues($( ".itemQuantity"+i )); 
+    		$( ".itemQuantity"+i ).spinner({
+    			min:0,  
+    			max: max,            
+    			down: "ui-icon-plus",
+    			up: "ui-icon-minus",
+    			change: function( event, ui ) {
+    				setTicketValues($(this)); 
+    			},spin: function( event, ui ) {
+    				setTicketValues($(this)); 
+    			}
+    		});
+    		if (i === 0) {
+    			setItemValue($(".optionsRadios"+i));
+    			setTicketValues($( ".itemQuantity"+i )); 
 
-		}
-	}	
+    		}
+    	}	
 
-}
+    }
 
 
-function getCostByIdData(event,callback){
-	$.ajax({
-		url:'getCostByEvent',
-		type:'GET',
-		data:{
-			'id':event
-		},
-		success:function(data){
-			callback(data);
-		}
-	});
-}
-function buildTicket(tableTicketDetails,eventSelected){
-	tableTicketDetails.empty();
-	getCostByIdData(eventSelected,function(data){
-		var hs = '';
-		if (data.status){
-			var list = data.list;
-			var objItemQuantity=new Array();
-			var objOptionRadios=new Array();
-			for (  var i =0; i<list.length;i++){
+    function getCostByIdData(event,callback){
+    	$.ajax({
+    		url:'getCostByEvent',
+    		type:'GET',
+    		data:{
+    			'id':event
+    		},
+    		success:function(data){
+    			callback(data);
+    		}
+    	});
+    }
+    function buildTicket(tableTicketDetails,eventSelected){
+    	tableTicketDetails.empty();
+    	getCostByIdData(eventSelected,function(data){
+    		var hs = '';
+    		if (data.status){
+    			var list = data.list;
+    			var objItemQuantity=new Array();
+    			var objOptionRadios=new Array();
+    			for (  var i =0; i<list.length;i++){
 
-				hs += '<tr class="text-center">';
-				hs += '  <td>';
-				hs += '<div class="form-check">';
-				hs += '  <label class="form-check-label">';
-				if (i===0) {
+    				hs += '<tr class="text-center">';
+    				hs += '  <td>';
+    				hs += '<div class="form-check">';
+    				hs += '  <label class="form-check-label">';
+    				if (i===0) {
 
-					hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  checked="checked" value="'+i+'">';
-				}else{
-					hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="'+i+'">';
-				}
+    					hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  checked="checked" value="'+i+'">';
+    				}else{
+    					hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="'+i+'">';
+    				}
 
-				hs += '  </label>';
-				hs += '  </div>';
-				hs += ' </td>';
-				hs += '  <td>';
-				hs += ' Venta ';
-				hs += '  <span>'+(list[i].name)+'</span>';
-				hs += '  </td>';
-				hs += '  </td>';
-				hs += ' <td><span>S/.</span>'+(list[i].value)+'</td>';
-				hs += ' <td><input type="text" class="form-control input-sm itemQuantity itemQuantity'+i+'" name="quantity" value="1" data-valuemax="'+list[i].maxQuantity+'" data-costtype="'+list[i].costType+'" /></td>';
-				hs += '   <td data-title="Total">S/. <span class="totalITem">0.0</span><input type="hidden" class="itemPrice" value="'+(list[i].value)+'" type="text" />';
+    				hs += '  </label>';
+    				hs += '  </div>';
+    				hs += ' </td>';
+    				hs += '  <td>';
+    				hs += ' Venta ';
+    				hs += '  <span>'+(list[i].name)+'</span>';
+    				hs += '  </td>';
+    				hs += '  </td>';
+    				hs += ' <td><span>S/.</span>'+(list[i].value)+'</td>';
+    				hs += ' <td><input type="text" class="form-control input-sm itemQuantity itemQuantity'+i+'" name="quantity" value="1" data-valuemax="'+list[i].maxQuantity+'" data-costtype="'+list[i].costType+'" /></td>';
+    				hs += '   <td data-title="Total">S/. <span class="totalITem">0.0</span><input type="hidden" class="itemPrice" value="'+(list[i].value)+'" type="text" />';
 
-				hs +='<input type="hidden" class="idCost" value="'+list[i].idCost+'" />';
-				hs +='</td>';
-				hs += '  </tr>';
+    				hs +='<input type="hidden" class="idCost" value="'+list[i].idCost+'" />';
+    				hs +='</td>';
+    				hs += '  </tr>';
 
-				tableTicketDetails.append(hs);
-				objItemQuantity[i]= $('.itemQuantity'+i);
-				objOptionRadios[i]=$('.optionsRadios'+i)
-				initTickesEventElements(objItemQuantity,objOptionRadios);
-				hs='';
-			}
-			initUserDataForm();
+    				tableTicketDetails.append(hs);
+    				objItemQuantity[i]= $('.itemQuantity'+i);
+    				objOptionRadios[i]=$('.optionsRadios'+i)
+    				initTickesEventElements(objItemQuantity,objOptionRadios);
+    				hs='';
+    			}
+    			initUserDataForm();
 
-		} else{
-			console('something was wrong');
-		}
-	});
-}
-var tableTicketDetails=$('.tableTicketDetails');
-var event =$('.eventSelected').val();
+    		} else{
+    			console('something was wrong');
+    		}
+    	});
+    }
+    var tableTicketDetails=$('.tableTicketDetails');
+    var event =$('.eventSelected').val();
 
-var btnPay=$('.payButton');
-btnPay.click(function(){
- 
+    var btnPay=$('.payButton');
+    btnPay.click(function(){
 
-	var birthdate = currentUserData.userData.birthdate.split('-');
 
-	var ageCurrentUser =calcularEdad(birthdate[2]+'-'+birthdate[1]+'-'+birthdate[0],'-');
+    	var birthdate = currentUserData.userData.birthdate.split('-');
 
-	$('.ageCurrentUser').text(ageCurrentUser);
+    	var ageCurrentUser =calcularEdad(birthdate[2]+'-'+birthdate[1]+'-'+birthdate[0],'-');
 
-	var opcRadio=$('.optionsRadios:checked').val();
-	var costtype= $('.optionsRadios:checked').parents('tr').find($('.itemQuantity')).data('costtype');
-	console.log(opcRadio); 
-	var s = $(".tbodyUserAdded .trUserAdded").length;
+    	$('.ageCurrentUser').text(ageCurrentUser);
 
-	console.log("costtype:"+costtype); 
-	if (costtype===2&s===0 ) {
-		/*usuario adicionales obligatorios*/
+    	var opcRadio=$('.optionsRadios:checked').val();
+    	var costtype= $('.optionsRadios:checked').parents('tr').find($('.itemQuantity')).data('costtype');
+    //	console.log(opcRadio); 
+    	var s = $(".tbodyUserAdded .trUserAdded").length;
+
+    	console.log("costtype:"+costtype); 
+    	if (costtype===2&s===0 ) {
+    		/*usuario adicionales obligatorios*/
 
           		//alert("obligatorios!::"+s)
           	}else{
@@ -727,24 +732,33 @@ btnPay.click(function(){
           	}
           });
 
-$(".btnAccept").click(function(){
+    $(".btnAccept").click(function(){
 					//window.location="payTicket";
+						$(".payButton").empty();
+					$(".payButton").append('Procesando <i class="fa fa-spinner fa-spin"></i>');
+					$(".payButton").attr('disabled','disabled');
 					var data={
 						'totalCost':totalCost,
 						'idCost':idCostSelected,
 						'_token':$('.token').val(),
 						'unitCost':unitCost
+
 					};
 					$.ajax({
 						url:'payTicket',type:'POST',data:data,
 						success:function(data){
 							if (data.submitStatus) {
 								window.location="payTicketSuccess";
+							}else{
+								$(".payButton").removeAttr('disabled');
 							}
+						},error:function(){
+						$(".payButton").removeAttr('disabled');
+
 						}
 					});
 				});
 
-buildTicket(tableTicketDetails,event);
+    buildTicket(tableTicketDetails,event);
 </script>
 @endsection

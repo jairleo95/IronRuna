@@ -1,8 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""><![endif]-->
-<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""><![endif]-->
-<!--[if IE 8]>			<html class="no-js lt-ie9" lang=""><![endif]-->
-<!--[if gt IE 8]><!-->	<html class="no-js" lang=""><!--<![endif]-->
+<html   lang="" ng-app="beginnersTutorialApp"  ><!--<![endif]-->
 
 <!-- Mirrored from 786themes.net/html/triathlon/triathlon/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Mar 2017 17:29:59 GMT -->
 <head>
@@ -103,7 +100,7 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul>
                                 <li class=" de "><a href="index" data-hover="Inicio">Inicio</a></li>
-                                <li><a href="inscription" data-hover="Inscripción">Inscripción</a></li>
+                                <li><a href="#inscription" data-hover="Inscripción">Inscripción</a></li>
                                 <li><a href="schedule" data-hover="Programa">Programa</a></li>
                                 <li><a href="byLaw" data-hover="Reglamento">Reglamento</a></li>
                                 <li><a href="information" data-hover="Información">Información</a></li>
@@ -118,13 +115,26 @@
     </header>
     <!-- Header End -->
     <!-- sections-->
+    <div ng-view ></div>
         @yield('content')
+
 <!-- Footer Start -->
     <footer id="footer" class="haslayout">
        
         <div class="container footer">
-        
+    
+            <div>
 
+
+
+
+                <a href="#payDespositNumber">Bl324234234ue</a>
+
+                    <label>Name:</label>
+                    <input type="text" ng-model="yourName" placeholder="Enter a name here">
+                    <hr>
+                    <h1 ng-bind ="yourName">Hello !</h1>
+                </div>
             <div class="row">
               
                 <div class="bottom-strip">
@@ -159,10 +169,11 @@
     <!-- Modal Box End -->
 </div>
 
-<script
-        src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -185,6 +196,28 @@
 <script src="{{asset('js/jsForm.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript">
+    var app = angular.module('beginnersTutorialApp', ["ngRoute"]);
+
+    app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "businessLogic/ticket/inscription.html"
+    }).when("/inscription", {
+        templateUrl : "businessLogic/ticket/inscription.html"
+    })
+    .when("/payDespositNumber", {
+        templateUrl : "businessLogic/pay/registerDepositNumber.html"
+    })
+    .when("/green", {
+        templateUrl : "green.htm"
+    })
+    .when("/blue", {
+        templateUrl : "blue.htm"
+    });
+});
+
+</script>
 
 @yield('scripts')
 

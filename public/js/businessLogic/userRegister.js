@@ -18,7 +18,7 @@ function initFormUserRegister(){
             });
     });
 
-     var formUserRegister=$('.formUserRegister').bootstrapValidator({
+     var formUserRegister=$('.formUserRegister').formValidation({
         message: 'Este valor es inválido',
         framework : 'bootstrap',
         excluded : ':disabled',
@@ -208,10 +208,10 @@ documentNumber:{
 }
 
 }
-}).on('success.validator.bv', function(e, data) {
+}).on('success.validator.fv', function(e, data) {
                 //console.log(data.result.message)
 
-             /*   $('.formUserRegister').data('bootstrapValidator').updateMessage('cellphone', 'notEmpty', 'el celular no puede ser null')
+             /*   $('.formUserRegister').data('formValidation').updateMessage('cellphone', 'notEmpty', 'el celular no puede ser null')
              */
              /*example*/
                /* if (data.field === 'birthdate' && data.validator === 'date' && data.result.date) {
@@ -238,7 +238,7 @@ documentNumber:{
             });
             $('.birthDate').on('dp.change dp.show', function (e) {
                     // Revalidate the date when user change it
-                    $('.formUserRegister').bootstrapValidator('revalidateField',   $('.birthDate'));
+                    $('.formUserRegister').formValidation('revalidateField',   $('.birthDate'));
                 });
 
 

@@ -15,10 +15,10 @@ class EventController extends Controller
  
         if (session()->has('userName')){
             # code...
-           // dd($idUser);
+  
               $idUser=   $request->session()->get('userName');
                 $countEvent= DB::select('select count( *) as numPay from userDataPay up , cost c , userData u where up.idCost =c.idCost and u.idUserData=up.idUserData and up.recordStatus=1 and c.idEvent=? and u.userName=? ', [decrypt($request->idEvent), $idUser]);
-        //  dd($countEvent);
+ 
 
                 $arr=[
                 'session' => true,
