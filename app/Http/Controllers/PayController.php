@@ -55,4 +55,8 @@ class PayController extends Controller
                         ]);
     }
 
+        public function getAllPayByUser(Request $request){
+            $sql="select p.idPay,p.payStatus,p.totalCost ,c.name,u.fullName,u.lastName,e.tittle,p.payCode from userdatapay udp, userdata u , pay p , cost c , ironruna.event e  where udp.idUserData=u.idUserData and p.idPay=udp.idPay and c.idCost=udp.idCost and e.idEvent=c.idEvent and u.recordStatus=1 and udp.recordStatus=1 and payByCurrentUserStatus=1";
+            
+        }
 }
