@@ -1,2 +1,2 @@
-<h1>Bienvenid@ {{$data['name']}}</h1>
+<h1>Bienvenid@ {{$data['name']}}</h1>Dar Clic en la URL para proceder a confrmar su cuenta.
 <a href="{{url()}}/auth/confirm/email/{{$data['email']}}/confirm_token/{{$data['confirm_token']}}">Confirmar mi cuenta</a>

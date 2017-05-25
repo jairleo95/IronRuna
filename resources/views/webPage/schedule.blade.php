@@ -4,7 +4,7 @@
     <section class="page-heading haslayout">
         <div class="container">
             <div class="row">
-                <h1>Programa</h1>
+                <h1>PROGRAMA OFICIAL HALF TRIATHLON IRONRUNA 2017</h1>
             </div>
         </div>
     </section>
@@ -27,69 +27,58 @@
                 right: 'listWeek,agendaWeek,agendaDay,month'
             },
             defaultView: 'listWeek',
-            defaultDate: '2017-08-06',
+            defaultDate: '2017-08-05',
             locale: 'es',
             navLinks: true, // can click day/week names to navigate views
             editable: false,
             eventLimit: true, // allow "more" link when too many events
             events: [
-                {
-                    title: 'Registro y entrega de Kits de competencia Salón Paracas Hotel Doubletree.',
-                    start: '2017-08-06T15:00:00',
-                    end:'2017-08-06T20:00:00'
+             	{
+                    title: 'Cierre de inscripciones HALF TRIATHLON IRONRUNA 2017 o cuando se completen los 400 cupos.',
+                    start: '2017-07-31T23:59:00'
                 },
                 {
-                    title: 'Exposición de maracas en Salón Paracas.',
-                    start: '2017-08-06T15:00:00',
-                    end:'2017-08-06T20:00:00'
+                    title: 'Registro y entrega de kits de competencia (lugar por definir aún).',
+                    start: '2017-08-05T15:00:00',
+                    end:'2017-08-05T20:00:00'
                 },
                 {
-                    title: 'Venta de suvenirs del evento',
-                    start: '2017-08-06T15:00:00',
-                    end:'2017-08-06T20:00:00'
+                    title: 'Charla de Psicología',
+                    start: '2017-08-05T17:00:00',
+                    end:'2017-08-05T17:15:00'
+                },
+				{
+                    title: 'Charla Médica',
+                    start: '2017-08-05T17:15:00',
+                    end:'2017-08-05T17:30:00'
                 },
                 {
-                    title: 'Asistencia mecánica a todos los deportistas. (Jardines del Salón Paracas)',
-                    start: '2017-08-06T15:00:00',
-                    end:'2017-08-06T20:00:00'
+                    title: 'Charla Técnica (mismo lugar).',
+                    start: '2017-08-05T17:30:00',
+                    end:'2017-08-05T18:00:00'
                 },
-                {
-                    title: 'Compra de fotografías para la competencia.',
-                    start: '2017-08-06T15:00:00',
-                    end:'2017-08-06T20:00:00'
-                },{
-                    title: 'Charla Técnica Salón Paracas.',
-                    start: '2017-08-06T18:00:00'
-                },{
-                    title: 'Charla Reserva Nacional de Paracas . Salón Paracas.',
-                    start: '2017-08-06T18:30:00'
-                },
-
+               
                 {
                     title: 'Ingreso a zona de transición. Registro obligatorio de bicicleta / Casco / Bolsa de bici / Bolsa de carrera.',
-                    start: '2017-11-05T05:00:00',
-                    end: '2017-11-05T06:45:00'
+                    start: '2017-08-06T05:00:00',
+                    end: '2017-08-06T06:45:00'
                 },
                 {
-                    title: 'Inicio de la competencia',
-                    start: '2017-11-05T07:00:00'
+                    title: 'Inicio de la competencia y primera edición del HALF TRIATHLON IRONRUNA 2017.',
+                    start: '2017-08-06T07:00:00'
                 },
                 {
-                    title: 'Exhibición de productos auspiciadores (zona de competencia).',
-                    start: '2017-11-05T08:00:00',
-                    end:'2017-11-05T15:00:00'
+                    title: 'Exhibición de productos auspiciadores.',
+                    start: '2017-08-06T08:00:00',
+                    end:'2017-08-06T15:00:00'
                 },
                 {
                     title: 'Premiación General',
-                    start: '2017-11-05T15:00:00'
+                    start: '2017-08-06T15:00:00'
                 },
                 {
-                    title: 'Termino oficial de la competencia. (Todos deben retirar su bici de la zona de transición).',
+                    title: 'Cierre oficial de la competencia y Premiaciones.',
                     start: '2017-11-05T15:00:00'
-                },
-                {
-                    title: 'Fiesta de clausura Triatlón Iron Runa 2017.',
-                    start: '2017-11-05T19:00:00'
                 }
             ]
         });

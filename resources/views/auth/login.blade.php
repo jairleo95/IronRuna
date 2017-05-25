@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('styles')
-
 <link href="css/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css" media="screen" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 @endsection
@@ -180,7 +179,7 @@
 									</div>
 								</div>
 							</div>
-							<!--Aditional data-->
+							<!--Aditional data 
 							<div class="form-group">
 								<label class="col-md-4 control-label">@lang('register.attributes.category')</label>
 								<div class="col-md-6 selectContainer" >
@@ -189,6 +188,8 @@
 									</select>
 								</div>
 							</div>
+
+                                                        -->
 							<div class="form-group">
 								<label class="col-md-4 control-label">@lang('register.attributes.observation')</label>
 								<div class="col-md-6" >

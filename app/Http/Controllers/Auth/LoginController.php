@@ -69,9 +69,9 @@ class LoginController extends Controller
         $userData=$this->findUserDataByUserName($req->email);
 
         if ($userData!=null){
-            $x ='false';
+            $x =    false;
         }else{
-            $x= 'true';
+            $x= true;
         }
         return response()->json([
             'valid' => $x

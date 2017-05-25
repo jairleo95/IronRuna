@@ -10,27 +10,32 @@ class EventController extends Controller
 {
 
     public function validateEventInscription(Request $request){
-// dd(decrypt($request->idEvent));
 
- 
-        if (session()->has('userName')){
+        $status=0;
+        $message ="Registrate";
+        $count=0;
+        $sessionStatus= $request->session()->has('userName');
+        if ($sessionStatus){
             # code...
-  
-              $idUser=   $request->session()->get('userName');
-                $countEvent= DB::select('select count( *) as numPay from userDataPay up , cost c , userData u where up.idCost =c.idCost and u.idUserData=up.idUserData and up.recordStatus=1 and c.idEvent=? and u.userName=? ', [decrypt($request->idEvent), $idUser]);
- 
-
-                $arr=[
-                'session' => true,
-                'EventInscription'=>$countEvent[0]->numPay 
-            ];
-          
-
-          }else{
-             $arr=[
-                'session' => false 
-            ];  
-          }
+               $idUser=$request->session()->get('userName');
+               $countEvent= DB::select('select count(c.idEvent) as numPay from userDataPay up , cost c , userData u,pay p where up.idCost =c.idCost and u.idUserData=up.idUserData and up.recordStatus=1 and p.idPay=up.idPay and c.idEvent=? and u.userName=? ', [decrypt($request->idEvent), $idUser]);
+               $count=$countEvent[0]->numPay;
+               if($count==1){
+                   $status=1;
+                   $message="En Proceso";
+               }else if  ($count==0){
+                   $status=2;
+                   $message ="Inscribete";
+               }
+            }
+        $arr=[
+            'session' => $sessionStatus,
+            'EventInscription'=> [
+                'status'=>$status,
+                'btnLabel'=>$message,
+                'count'=> $count
+            ]
+        ];
         return response()->json($arr);        
     }
     public function getAllEvent(){

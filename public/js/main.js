@@ -271,11 +271,11 @@ $(document).ready(function () {
     });
     var map;
     function initialize() {
-        var myLatlng = new google.maps.LatLng(-12.0252296, -77.0019247);
+        var myLatlng = new google.maps.LatLng(-12.0089131,-76.9924053);
         $("#contacus-map").gmap3({
             map: {
                 options: {
-                    zoom: 14, center: myLatlng
+                    zoom: 16, center: myLatlng
                 }
             },
             marker: {

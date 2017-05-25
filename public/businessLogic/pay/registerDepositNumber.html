@@ -1,55 +1,143 @@
-
-<div  class="well well-light">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-4"><label>Evento :</label> <label class="">Perú 2017 Lima - Half Iron Runa</label></div>
-			<div class="col-md-4"><label>Tipo :</label><label> Postas</label></div>
-			<div class="col-md-4"><label>Monto Total:</label> <label>S/. 250.00</label></div>
-			<br><br>
+<div class="content haslayout">
+	<div  class="well well-light">
+		<div class="row">
 			<div class="col-md-12">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Número de deposito">
-					<span class="input-group-btn">
-
-						<button class="btn btn-default btn-success btnRegisterDepositNumber" type="button"  title="Enviar" >	<i class="fa fa-send"></i>
-						</button>
-					</span>
-				</div><!-- /input-group -->
-
-
-
-
+				<div class="col-md-4"><label>Evento : </label> <label class="enventName"> </label></div>
+				<div class="col-md-4"><label>Tipo : </label> <label class="eventType">  </label></div>
+				<div class="col-md-4"><label>Monto Total: </label> <label class="eventCost"> </label></div>
+				<br><br>
+				<div class="col-md-12">
+					<div class="input-group">
+						<input type="text" class="form-control depositNumber" placeholder="Número de deposito">
+						<span class="input-group-btn">
+							<button class="btn btn-default btn-success btnRegisterDepositNumber" type="button"    title="Enviar" >	<i class="fa fa-send"></i>
+							</button>
+						</span>
+					</div><!-- /input-group -->
+					<button class="btn btn-primary pull-right btnFinishPay" style="display: none;">Terminar</button>
+				</div>
 			</div>
 		</div>
 	</div>
-
-
-	<input type="hidden" class="eventSelected" value="{{ session('eventSelected')}}" >
-	
-
 	<script type="text/javascript">
-	
+			var btnRegisterDepositNumber =$('.btnRegisterDepositNumber');
+			var depositNumber=$('.depositNumber');
+            var btnFinishPay=$('.btnFinishPay');
+			var idPay='';
+			var btnAction ='save';
+			var currentPayData;
+				btnFinishPay.click(function(e){
+                    btnFinishPay.empty().append('Actualizando...').attr('disabled','disabled');
+                    updatePayFisnishedStatus(function (data) {
 
-			var idEvent=$('.eventSelected').val();
-			$('.btnRegisterDepositNumber').tooltip({
-				content: "Enviar!", 
+						if (data.status){
+							/*last step for pay process*/
+						}else {btnFinishPay.empty().append('Terminar').removeAttr('disabled');alert('Error al terminar el pago');}
+
+                    });
+				});
+			function updatePayFisnishedStatus(callback){
+             var data ={
+                 'idPay':idPay,
+                 'payFinished':1,'_token':$('._token').val(),
+				 };
+					 $.ajax({
+							url:'updatePayFinishedStatus',
+							data:data,type:'post',success:function (data) {
+									if (typeof callback!=='undefined'){callback(data);}
+							}
+						});
+			}
+			function printPayData(data){
+			    if (typeof data.data.payCode!=='undefined' & data.data.payCode!==null & btnAction==='save'){
+			        /*register*/
+                    btnAction ='read';
+			        console.log('register option for pay data');
+                    depositNumber.val(data.data.payCode);
+                    btnPayRender();
+                }else {
+                    btnAction='save';
+                    btnPayRender();
+				}
+			}
+			function enabledBtnFinishPay(status) {
+					if (!status){
+                        btnFinishPay.show();
+					}
+            }
+			function getPayCurrentUser(callback){
+				var data={'idEvent':idEvent};
+                $.ajax({
+                    url:'getPayCurrentUser',
+                    data:data,type:'get',
+                    success:function(data){
+                        if (data.status) {
+                            callback(data);
+                        }else{
+                            console.log('ocurrio un error al cargar los datos');
+                        }
+                    }
+                });
+            }
+            getPayCurrentUser(function (data) {
+                $('.enventName').text(data.data.tittle);
+                $('.eventCost').text(data.data.totalCost);
+                $('.eventType').text(data.data.name);
+                idPay=data.data.idPay;
+                enabledBtnFinishPay(data.payStatus);
+                currentPayData=data;
+                printPayData(currentPayData);
+            });
+			btnRegisterDepositNumber.tooltip({
+				content: "Enviar", 
 				classes: {
 					"ui-tooltip": "highlight"
 				}
-			});   
-			var data={
-				'idEvent':idEvent
-			};
-	$.ajax({
-		url:'getPayCurrentUser',data:data,type:'get',
-		success:function(data){
-			if (data.status) {
-
-			}else{
-
-			}
-		}
-	});
-
-
-</script>
+			});
+            function btnPayRender(callback) {
+               if(btnAction==='update'|| btnAction==='save'){
+                    btnRegisterDepositNumber.empty();
+                    btnRegisterDepositNumber.append('<i class="fa fa-check"></i>');
+                    btnRegisterDepositNumber.removeAttr('disabled');
+                   	depositNumber.removeAttr('readonly');
+                    btnAction='send';
+                } else if(btnAction==='send') {
+                    btnRegisterDepositNumber.empty();
+                    btnRegisterDepositNumber.append('<i class="fa fa-spin fa-spinner"></i>');
+                    btnRegisterDepositNumber.attr('disabled', 'disabled');
+                   if(typeof callback !=='undefined'){
+                       callback();
+                   	}
+                }
+                else if(btnAction==='read'){
+                   btnAction='update';
+                   depositNumber.attr('readonly','readonly');
+                   btnRegisterDepositNumber.empty();
+                   btnRegisterDepositNumber.append('<i class="fa fa-pencil"></i>');
+                   btnRegisterDepositNumber.removeAttr('disabled');
+			   }
+            }
+			btnRegisterDepositNumber.click(function (e){
+                btnPayRender(function () {
+                    if(btnAction==='send'){
+                        var data ={
+                            'idPay':idPay,
+                            'depositNumber':$('.depositNumber').val(),
+                            '_token':$('._token').val(),
+                            'action':btnAction
+                        };
+                        $.ajax({
+                            url:'saveDepositNumber',data:data,type:'post',success: function(data){
+                                if (data.status) {
+                                    btnAction='read';
+                                    btnPayRender();
+                                }else{
+                                    alert('Error al registrar');
+                                    btnRegisterDepositNumber.removeAttr('disabled');
+                                }
+                            }
+                        });
+                    }
+                });
+			});
+		</script>

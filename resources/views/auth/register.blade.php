@@ -29,7 +29,7 @@
 				<div class="tab-content ">
 					<div class="tab-pane active" id="1">
 
-						<form class="form-horizontal" role="form" method="POST" action="{{route('login')}}">
+						<form class="form-horizontal"   method="POST" action="{{route('login')}}" >
 
 							<div class="form-group">
 								<label class="col-md-4 control-label">{{ trans('login.attributes.email') }}</label>
@@ -60,7 +60,7 @@
 						</form>	
 					</div>
 					<div class="tab-pane" id="2">
-						<form class="form-horizontal formUserRegister" role="form" method="POST" action="{{route('register')}}"  >
+						<form class="form-horizontal formUserRegister" role="form" method="POST" action="{{route('register')}}"   >
 							<input type="hidden" name="_token" value="{{csrf_token() }}">
 							<div class="form-group">
 								<label class="col-md-4 control-label">@lang('register.attributes.fullName')  </label>
@@ -180,7 +180,7 @@
 									</div>
 								</div>
 							</div>
-							<!--Aditional data-->
+							<!--Aditional data
 							<div class="form-group">
 								<label class="col-md-4 control-label">@lang('register.attributes.category')</label>
 								<div class="col-md-6 selectContainer" >
@@ -188,7 +188,7 @@
 										<option value="1">Seleccione</option>
 									</select>
 								</div>
-							</div>
+							</div>-->
 							<div class="form-group">
 								<label class="col-md-4 control-label">@lang('register.attributes.observation')</label>
 								<div class="col-md-6" >
@@ -203,10 +203,10 @@
 							</div>
 							<div class="form-group">
 								<label class="col-md-4 control-label"></label>
-								<div class="col-md-6">
+							
+									<div class="col-md-6">
 									<div class="g-recaptcha pull-right" data-sitekey="6Le_NCAUAAAAAAQwX48E9wq5mMCBzUnPkRJPhnfq"></div>
 								</div>
-
 							</div>
 
 							<div class="col-md-12"><button type="submit" class="btn btn-success btn-block">

@@ -1,71 +1,82 @@
 
 <section class="page-heading haslayout">
   <div class="container">
-   <div class="row">
-    <h1>Carreras</h1>
-</div>
+     <div class="row">
+        <h1>Inscripcion</h1>
+    </div>
 </div>
 </section>
-
 <div   class="containerEvent">
     <section class="events haslayout">
         <div class="container">
             <div class="row">
                 <div class="head-section">
-                    <div class="border-title"><h2>Eventos</h2></div>
-                    <!--<span class="title">Próximos Eventos...</span>-->
+                    <div class="border-title"><h2>Eventos</h2></div> 
                 </div>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <!-- begin loop for event properties-->
                     <div class="eventListDetails">
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 </div>
-
 <script type="text/javascript">
+    var uriEvent='';
     var contentPage=$('.containerEvent');
     function initPageRegisterDepositNumber(){
         contentPage.load('businessLogic/pay/registerDepositNumber.html');
     }
+    function initPageRedirect(){
+        window.location=uriEvent;
+    }
+    
     var idEvent='';
+    var inscriptionUserStatus;
     function initInscriptionEvents(){
         $.each($(".initInscription"),function(index){
             var objBtn=  $(this);
             idEvent=$(this).data('value');
-            var uriEvent='checkout/'+idEvent;
+            uriEvent='checkout/'+idEvent;
             var data ={
                 'idEvent':idEvent
             };
-            console.log(idEvent);
+        var    btnFunction =undefined;
             $.ajax({
                 url:'validateEventInscription',
                 data:data,
                 type:'get',success:function(data){
-                    var btnName='Inscribirse';             
+                    var btnName=data.EventInscription.btnLabel;
                     if (data.session) {
-                        if (data.EventInscription>0) {
-                            btnName='En Proceso';
+                        if (data.EventInscription.status===1) {
+                            console.log("option 1");
+                            btnFunction=initPageRegisterDepositNumber;
+                        }else if(data.EventInscription.status===2){
+                            console.log("option 2");
+                            btnFunction=initPageRedirect;
+                        }else{
+                            console.log("option else");
+                            uriEvent='register';
+                            btnFunction=initPageRedirect;
                         }
                     }else{
-                     btnName='Registrarse';
-                 }
-                 objBtn.append('<button class="btnInitEvent'+index+' btn-theme red btn-book-now" value="'+uriEvent+'">'
+                        uriEvent='register';
+                        btnFunction=initPageRedirect;
+                   }
+                        objBtn.append('<button class="btnInitEvent'+index+' btn-theme red btn-book-now" value="'+uriEvent+'">'
                     +   '<span class="txt">'+btnName+'</span>'
                     +   '<span class="round">'
                     +   '<i class="fa fa-arrow-right"></i>'
                     +   '</span>'+
                     '</button>');
-                 $('.btnInitEvent'+index).click(function () {
-                    initPageRegisterDepositNumber();
-                  //  window.location=uriEvent;
+                   $('.btnInitEvent'+index).click(function () {
+                  //  initPageRegisterDepositNumber();
+                       if (typeof  btnFunction !=='undefined'){
+                           btnFunction();
+                       }
               });
-
-             }
-         });
+               }
+           });
             /*validar si esta en el evento*/
         });
     }

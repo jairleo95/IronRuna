@@ -16,7 +16,8 @@ class AlterPayTable extends Migration
         Schema::table('pay', function (Blueprint $table) {
             //
             /*add */
-              $table->string('payCode',100)->nulleable();
+            $table->string('payCode',100)->nulleable();
+            $table->boolean('payFinished')->nulleable();
         });
     }
 

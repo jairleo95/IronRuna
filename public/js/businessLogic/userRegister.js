@@ -70,10 +70,10 @@ email: {
             max: 50,
             message: 'El email de usuario debe tener más de 6 y menos de 50 caracteres.'
         },
-        remote: {
+        /*remote: {
             url: 'isValidUserName',
             message: 'El correo ya ha sido registrado'
-        },
+        },*/
         regexp: {
             regexp: emailRegex,
             message: 'Debe ingresar un email'
@@ -233,13 +233,11 @@ documentNumber:{
                         data.fv.updateMessage(data.field, data.validator, 'The date is not valid');
                     }
                 }*/
-            }).on('success.form.fv', function(e) {
-                /* do submitting with ajax*/
             });
-            $('.birthDate').on('dp.change dp.show', function (e) {
-                    // Revalidate the date when user change it
-                    $('.formUserRegister').formValidation('revalidateField',   $('.birthDate'));
-                });
+                        $('.birthDate').on('dp.change dp.show', function (e) {
+                                // Revalidate the date when user change it
+                                $('.formUserRegister').formValidation('revalidateField',   $('.birthDate'));
+                            });
 
 
             return formUserRegister;

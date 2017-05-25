@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="panel-footer">
-                   <a href="http://ironruna.com/payTicketFinalStep" class="btn btn-primary pull-right">Registrar Pago</a>
+                   <a href="http://ironruna.com/"  class="btn btn-primary pull-right">Registrar Pago (Proximamente)</a>
     <br>
                  </div>
 </div>

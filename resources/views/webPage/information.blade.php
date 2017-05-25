@@ -41,11 +41,11 @@
                     <h2>Un triatlón impresionante</h2>
                     <span class="date">06 de Agosto, 2017</span>
                     <div class="description text-justify">
-                        <p>Este próximo domingo 06 de agosto del 2017, se llevará a cabo la primera edición del “HALF IRONRUNA”, competencia que se desarrollará a lo largo y ancho de la Costa Verde, en Lima, Perú, lugar  tradicional por excelencia de los primeros triathlones desarrollados en nuestro país desde la década de los ´80s.
+                        <p>Este próximo domingo 06 de agosto del 2017, se llevará a cabo la primera edición del “HALF TRIATHLON IRONRUNA”, competencia que se desarrollará a lo largo y ancho de la Costa Verde, en Lima, Perú, lugar  tradicional por excelencia de los primeros triathlones desarrollados en nuestro país desde la década de los ´80s.
                         </p>
                         <p>Los 1900 mt de natación se desarrollaran en las aguas de  Playa de Agua Dulce del Océano Pacífico, con condiciones de marea muy tranquilas.Los 90 km del sector de ciclismo se desarrollarán a lo largo de la Costa Verde, sobre un circuito plano y muy rápido en su mayor porcentaje.Los 21 km del sector de carrera,  serán completados frente al circuito de playas de la Costa Verde, ofreciendo vistas impresionantes y muy hermosas, para finalizar en el corazón de la ya tradicional Playa de Agua Dulce.
                         </p>
-                        <p>“HALF IRONRUNA”, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!
+                        <p>“HALF TRIATHLON IRONRUNA”, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!
                         </p>
                        </div>
                        <div class="post-img text-center">

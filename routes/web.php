@@ -12,7 +12,7 @@
 */
 
 /**test routes*/
-Route::get('test', 'Auth\RegisterController@test');
+Route::post('test', 'Auth\RegisterController@test');
 Route::get('testQuery','Auth\LoginController@testQuery');
 
 /**end test routes*/
@@ -28,6 +28,8 @@ Route::get('validateEventInscription','EventController@validateEventInscription'
 
 Route::get('getCurrentUserData','Auth\LoginController@getCurrentUserData');
 
+
+//Route::get('getPayData','PayController@getPayData');
 
 Route::get('main',['as' => 'main', 'uses' => 'Auth\AuthController@home']);
 
@@ -53,6 +55,7 @@ Route::get('login', [
     'as'=>'login'
 ]);
 Route::post('login', 'Auth\LoginController@postLogin');
+Route::post('saveDepositNumber', 'PayController@saveDepositNumber');
 
 Route::get('logout', [
     'uses'=>'Auth\AuthController@getLogout',
@@ -173,11 +176,17 @@ Route::get('payTicketFinalStep', [
 ]);
 
 
+
 Route::get('getPayCurrentUser', [
     'uses'=>'PayController@getPayCurrentUser',
     'as'=>'getPayCurrentUser'
 ]);
 
+
+Route::post('updatePayFinishedStatus', [
+    'uses'=>'PayController@updatePayFinishedStatus',
+    'as'=>'updatePayFinishedStatus'
+]);
 
 
 Route::get('checkout/{id}', 'PayController@checkoutAccess');

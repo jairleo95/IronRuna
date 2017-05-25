@@ -1,10 +1,11 @@
 @extends('webPage.main')
 @section('content')
 <!-- Slider Start -->
+ <!-- 
 <section class="haslayout" style="padding-top:10px;padding-bottom: 10px;">
   <div class="container">
   <div class="row">
-        <div class="sponsors-small-slider owl-carousel owl-theme">
+      <div class="sponsors-small-slider owl-carousel owl-theme">
                 <div class="item">
                     <div class="box">
                         <img src="images/sponsor-01.png" alt="image description">
@@ -60,6 +61,7 @@
   </div>
     </div>
 </section>
+-->
 <section class="banner-slider haslayout">
     <div class="container">
         <div class="row">
@@ -67,10 +69,10 @@
                 <div class="item">
                     <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Half Iron Runa</h1>
+                            <h1>HALF TRIATHLON IRONRUNA</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
-                        <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
+                        <p>HALF TRIATHLON IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
                         <a href="{{route('register')}}}" class="btn-theme red" data-toggle="modal" data-target=".bs-example-modal-sm">
                             <span class="txt">Inscribirse</span>
                             <span class="round">
@@ -85,7 +87,7 @@
                 <div class="item">
                     <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Half Iron Runa</h1>
+                            <h1>HALF TRIATHLON IRONRUNA</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -97,7 +99,7 @@
                 <div class="item">
                     <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Half Iron Runa</h1>
+                            <h1>HALF TRIATHLON IRONRUNA</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -109,7 +111,7 @@
                 <div class="item">
                     <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Half Iron Runa</h1>
+                            <h1>HALF TRIATHLON IRONRUNA</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -121,7 +123,7 @@
                 <div class="item">
                     <div class="col-sm-6 text-justify">
                         <div class="heading-area">
-                            <h1>Half Iron Runa</h1>
+                            <h1>HALF TRIATHLON IRONRUNA</h1>
                             <span class="date">6 Agosto, 2017</span>
                         </div>
                         <p>HALF IRONRUNA, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!</p>
@@ -170,7 +172,7 @@
                         <div class="item">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <strong class="date">06/08</strong>
-                                <span class="venue">Half Iron Runa</span>
+                                <span class="venue">HALF TRIATHLON IRONRUNA</span>
                                 <div class="description text-justify">
                                     <p>Los 1900 mt de natación se desarrollaran en las aguas de Playa de Agua Dulce del Océano Pacífico, con condiciones de marea muy tranquilas. Los 90 km del sector de ciclismo se desarrollarán a lo largo de la Costa Verde, sobre un circuito plano y muy rápido en su mayor porcentaje.</p>
                                 </div>
@@ -198,7 +200,7 @@
             <div class="gallery">
                 <!-- begin filter -->
                 <ul id="gallery-cats" class="option-set">
-                    <li class="select">
+                    <li>
                         <a href="#" class="btn-theme black" data-filter="*">
                             <span class="txt">Todos</span>
                             <span class="round">
@@ -206,9 +208,9 @@
                                         </span>
                         </a>
                     </li>
-                    <li>
+                    <li  class="select">
                         <a href="#" class="btn-theme black" data-filter=".spring">
-                            <span class="txt">Spring</span>
+                            <span class="txt">Galeria 1</span>
                             <span class="round">
                                             <i class="fa fa-toggle-right"></i>
                                         </span>
@@ -216,7 +218,7 @@
                     </li>
                     <li>
                         <a href="#" class="btn-theme black" data-filter=".summer">
-                            <span class="txt">Summer</span>
+                            <span class="txt">Galeria 2</span>
                             <span class="round">
                                             <i class="fa fa-toggle-right"></i>
                                         </span>
@@ -224,7 +226,7 @@
                     </li>
                     <li>
                         <a href="#" class="btn-theme black" data-filter=".autumn">
-                            <span class="txt">Autumn</span>
+                            <span class="txt">Galeria 3</span>
                             <span class="round">
                                             <i class="fa fa-toggle-right"></i>
                                         </span>
@@ -232,7 +234,7 @@
                     </li>
                     <li>
                         <a href="#" class="btn-theme black" data-filter=".winter">
-                            <span class="txt">Winter</span>
+                            <span class="txt">Galeria 4</span>
                             <span class="round">
                                             <i class="fa fa-toggle-right"></i>
                                         </span>
@@ -250,8 +252,8 @@
                                         </span>
                         </a>
                     </article>
-                    <article class="gallery-item col-sm-4 summer">
-                        <a href="images/custom/2.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/3.jpg" alt="image description"></a>
+					<article class="gallery-item col-sm-4 spring">
+                        <a href="images/custom/34.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/34.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">
@@ -259,6 +261,44 @@
                                         </span>
                         </a>
                     </article>
+					<article class="gallery-item col-sm-4 spring">
+                        <a href="images/custom/29.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/29.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 spring">
+                        <a href="images/custom/30.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/30.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+                    <article class="gallery-item col-sm-4 summer">
+                        <a href="images/custom/31.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/31.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					
+					<article class="gallery-item col-sm-4 summer">
+                        <a href="images/custom/3.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/3.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					
                     <article class="gallery-item col-sm-4 autumn">
                         <a href="images/img4.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/img4.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
@@ -268,8 +308,90 @@
                                         </span>
                         </a>
                     </article>
+					<article class="gallery-item col-sm-4 autumn">
+                        <a href="images/custom/16.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/16.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 autumn">
+                        <a href="images/custom/15.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/15.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 autumn">
+                        <a href="images/custom/14.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/14.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 autumn">
+                        <a href="images/custom/17.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/17.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 autumn">
+                        <a href="images/custom/23.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/23.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
                     <article class="gallery-item col-sm-4 winter">
                         <a href="images/img5.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/img5.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 winter">
+                        <a href="images/custom/25.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/25.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 winter">
+                        <a href="images/custom/6.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/6.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 winter">
+                        <a href="images/custom/7.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/7.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					
+					<article class="gallery-item col-sm-4 winter">
+                        <a href="images/custom/10.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/10.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">
@@ -288,6 +410,33 @@
                     </article>
                     <article class="gallery-item col-sm-4 summer">
                         <a href="images/custom/13.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/13.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					 <article class="gallery-item col-sm-4 summer">
+                        <a href="images/custom/14.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/14.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 summer">
+                        <a href="images/custom/11.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/11.jpg" alt="image description"></a>
+                        <a href="#" class="btn-theme btn-date red">
+                            <span class="txt">21/05/2017</span>
+                            <span class="round">
+                                            <i class="fa fa-edit"></i>
+                                        </span>
+                        </a>
+                    </article>
+					<article class="gallery-item col-sm-4 summer">
+                        <a href="images/custom/12.jpg" data-rel="prettyPhoto[gallery1]"><img src="images/custom/12.jpg" alt="image description"></a>
                         <a href="#" class="btn-theme btn-date red">
                             <span class="txt">21/05/2017</span>
                             <span class="round">

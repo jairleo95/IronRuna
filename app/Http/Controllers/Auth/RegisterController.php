@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+            ]);
     }
 
     /**
@@ -64,32 +64,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
         DB::table('userData')->insert(
-                [
-                'idRole' => $data['idRole'],
-                'userName'=>$data['userName'],
-                'userPassword'=>bcrypt($data['userPassword']),
-                'fullName'=>$data['fullName'],
-                'lastName'=>$data['lastName'],
-                'gender'=>$data['gender'],
-                'documentType'=>$data['documentType'],
-                'documentNumber'=>$data['documentNumber'],
-                'cellphone'=>$data['cellphone'],
-                'birthdate'=>$data['birthdate'],
-                'expirationDate'=>$data['expirationDate'],
-                'recordStatus'=>$data['recordStatus'],
-                'confirmationStatus'=>$data['confirmationStatus'],
-                'confirmationToken'=>$data['confirmationToken'],
-
-                'idCategory'=>$data['category'],
-                'idTeam'=>1,
-                'observation'=>$data['observation'],
-                'emergencyPhone'=>$data['emergencyPhone'],
-                'phone'=>$data['phone']
-                ]
-        );
+            [
+            'idRole' => $data['idRole'],
+            'userName'=>$data['userName'],
+            'userPassword'=>bcrypt($data['userPassword']),
+            'fullName'=>$data['fullName'],
+            'lastName'=>$data['lastName'],
+            'gender'=>$data['gender'],
+            'documentType'=>$data['documentType'],
+            'documentNumber'=>$data['documentNumber'],
+            'cellphone'=>$data['cellphone'],
+            'birthdate'=>$data['birthdate'],
+            'expirationDate'=>$data['expirationDate'],
+            'recordStatus'=>$data['recordStatus'],
+            'confirmationStatus'=>$data['confirmationStatus'],
+            'confirmationToken'=>$data['confirmationToken'],
+            'idCategory'=>0,
+            'idTeam'=>0,
+            'observation'=>$data['observation'],
+            'emergencyPhone'=>$data['emergencyPhone'],
+            'phone'=>$data['phone']
+            ]
+            );
 
     }
     public function getRegister(){
@@ -100,78 +99,68 @@ class RegisterController extends Controller
         return $userData;
     }
     public function successRegisterMessage() {
-       return view('emails.subscriber.successSubscriber');
-    }
-        public function findUserDataByDocummentNumber(Request $request){
-            $users =$this->getUserDataByDocummentNumer($request->documentNumber);
-             
-            if ($users==null) {
-                # code...
-                 $data =['searchStatus'=>false,'isEnabled'=>true];
-            }else{
-                  $data =[
-                     'searchStatus'=>true,
-                     'data' =>  [
-                            'userData'=> [
-                            'fullName'=>$users->fullName,
-                            'lastName'=>$users->lastName,
-                            'idUser'=>encrypt($users->idUserData),
-                            'isEnabled'=>true
-                            ]
-                    ]
+     return view('emails.subscriber.successSubscriber');
+ }
+ public function findUserDataByDocummentNumber(Request $request){
+    $users =$this->getUserDataByDocummentNumer($request->documentNumber);
 
-                ];
-            }
-            return response()->json($data);
-        }    
+    if ($users==null) {
+                # code...
+       $data =['searchStatus'=>false,'isEnabled'=>true];
+   }else{
+      $data =[
+      'searchStatus'=>true,
+      'data' =>  [
+      'userData'=> [
+      'fullName'=>$users->fullName,
+      'lastName'=>$users->lastName,
+      'idUser'=>encrypt($users->idUserData),
+      'isEnabled'=>true
+      ]
+      ]
+
+      ];
+  }
+  return response()->json($data);
+}    
 protected function getUserDataByDocummentNumer ($documentNumber){
     $user = DB::table('userData')->where('documentNumber', $documentNumber)->first();
     
-     return $user;
+    return $user;
 }
 
 public function test(Request $request){
-    //dd($request->input('users'));
-  /* 
-     $users =$request->input('users');
 
-     $size =  (count($users));
-     for ($r=0; $r < $size; $r++) { 
-         # code...
-        print_r( $users[$r]['name']);
-     }*/
-$mails = new MailController();
-$mails->sendMultipleMails($request);
+ 
 
 
-            
-    
 }
-    public function subscriberUser(Request $request){
-        $token=str_random(100);
-        $this->create(
-                     
-                        [
-                        'idRole' => 1,
-                        'userName'=>$request->input('email'),
-                        'userPassword'=>$request->input('password'),
-                        'fullName'=>$request->input('fullName'),
-                        'lastName'=>$request->input('lastName'),
-                        'gender'=>$request->input('gender'),
-                        'documentType'=>$request->input('documentType'),
-                        'documentNumber'=>$request->input('documentNumber'),
-                        'cellphone'=>$request->input('cellphone'),
-                        'birthdate'=> date('Y-m-d', strtotime(str_replace('-', '/', $request['birthdate']))),
-                        'expirationDate'=>date('Y-m-d', null),
-                        'recordStatus'=>true,
-                        'confirmationStatus'=>false,
-                        'confirmationToken'=>$token,
-                        'category'=>$request->input('category'),
-                        'observation'=>$request->input('observation'),
-                        'emergencyPhone'=>$request->input('emergencyPhone'),
-                        'phone'=>$request->input('phone')
-                        ]
-            );
+public function subscriberUser(Request $request){
+    $token=str_random(100);
+    $this->create(
+
+        [
+        'idRole' => 1,
+        'userName'=>$request->input('email'),
+        'userPassword'=>$request->input('password'),
+        'fullName'=>$request->input('fullName'),
+        'lastName'=>$request->input('lastName'),
+        'gender'=>$request->input('gender'),
+        'documentType'=>$request->input('documentType'),
+        'documentNumber'=>$request->input('documentNumber'),
+        'cellphone'=>$request->input('cellphone'),
+        'birthdate'=> date('Y-m-d', strtotime(str_replace('-', '/', $request['birthdate']))),
+        'expirationDate'=>date('Y-m-d', null),
+        'recordStatus'=>true,
+        'confirmationStatus'=>true,
+        'confirmationToken'=>$token,
+        'category'=>$request->input('category'),
+        'observation'=>$request->input('observation'),
+        'emergencyPhone'=>$request->input('emergencyPhone'),
+        'phone'=>$request->input('phone')
+        ]
+        );
+    try{
         /*Send Email to subscriber confirmation*/
         MailController::sendConfirmationSubscriber([
             'email'=>$request['email'],
@@ -180,26 +169,33 @@ $mails->sendMultipleMails($request);
             'body'=>$token,
             'confirmationURL'=>'http://ironruna.com/subscriberConfirmation/'.$token
         ]);
-                return Redirect::route('subscriptionsuccess');
+    } catch(\Exception $e){
+        // Get error here
+
+    }finally{
+        return Redirect::route('subscriptionsuccess');
     }
-    public function subscribeConfirmation($token){
-         $userData=$this->getUserDataByConfirmationToken($token);
-        $rptaView='register';
-            if ($userData==null){
-                $message= 'La cuenta a la que ingresas no existe!';
-            }else{
-                if ($userData[0]->confirmationStatus==0){
-                  DB::update('update userData set confirmationStatus = 1 where confirmationToken = ? and recordStatus =1',
-                        [$token]);
-                    $rptaView='index';
-                    $message= 'Se ha confirmado su cuenta correctamente!';
-                }else{
 
-                    $message= 'Su token de acceso ha expirado!';
-                }
-            }
 
-        return redirect()->route($rptaView);
+}
+public function subscribeConfirmation($token){
+   $userData=$this->getUserDataByConfirmationToken($token);
+   $rptaView='register';
+   if ($userData==null){
+    $message= 'La cuenta a la que ingresas no existe!';
+}else{
+    if ($userData[0]->confirmationStatus==0){
+      DB::update('update userData set confirmationStatus = 1 where confirmationToken = ? and recordStatus =1',
+        [$token]);
+      $rptaView='index';
+      $message= 'Se ha confirmado su cuenta correctamente!';
+  }else{
 
-    }
+    $message= 'Su token de acceso ha expirado!';
+}
+}
+
+return redirect()->route($rptaView);
+
+}
 }

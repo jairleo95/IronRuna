@@ -8,9 +8,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
 <style type="text/css">
-.formUserRegister .tab-content {
-    margin-top: 20px;
-}
+	.formUserRegister .tab-content {
+		margin-top: 20px;
+	}
 </style>
 
 @endsection
@@ -44,43 +44,33 @@
 					<tbody class="tableTicketDetails"></tbody>
 				</table>
 				<div class="cart-foot row">
-					<div class="col-sm-6">
-
-				 
+					<div class="col-sm-6">				 
 					</div>
 					<div class="col-sm-3">
 						<strong class="pull-right">Total del pedido</strong>
-
 					</div>
 					<div class="col-sm-3">
 						<strong class="pull-right">S/.<span class="totalCost">0.0</span></strong>
 					</div>
 				</div>
 			</div>
-
 		</div> </div>
 		<br>
-
 		<div class="row">
-
 			<div class="aditionalData" style="display: none;" >
 				<div class="col-md-6 userdataSearch">
 					<div class="well well-light">
 						<div class="input-group" style="width: 100%;">
 							<input type="text" class="form-control documentNumberSearch" placeholder="Search for document number" style="width: 100%;">
-							<span class="input-group-btn inputDocumentSearch" >
-								
+							<span class="input-group-btn inputDocumentSearch" >	
 							</span>
 						</div><!-- /input-group -->
 						<br>
-
 						<section > 
 							<div class="row"><div class="col-md-6"><span class="userDataItem"></span></div>
 							<div class="col-md-6"><div class="disciplineItem"></div></div></div>
 							<div class="searchMessage row"></div>
 						</section>
-
-
 						<div class="userDataRegister" style="display: none;">
 							<form  class="form-horizontal formUserRegister" role="form" method="POST" action="{{route('register')}}">
 								<ul class="nav nav-pills">
@@ -220,7 +210,7 @@
 										
 									</div>
 									<div class="tab-pane"  id="step-3">
-										<!--Aditional data-->
+										<!--Aditional data
 										<div class="form-group">
 											<label class="col-md-4 control-label">@lang('register.attributes.category')</label>
 											<div class="col-md-6 selectContainer" >
@@ -228,7 +218,7 @@
 													<option value="1">Seleccione</option>
 												</select>
 											</div>
-										</div>
+										</div>-->
 										<div class="form-group">
 											<label class="col-md-4 control-label">@lang('register.attributes.observation')</label>
 											<div class="col-md-6" >
@@ -344,9 +334,6 @@
 	</div>
 	@endsection
 	@section('scripts')
-
-
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 	<script src='js/businessLogic/userRegister.js'></script>
 	<script>
@@ -360,12 +347,10 @@
 		var costtypeSelected=0;
 		var payTicket=[];
 		var currentUserItem;
-
 		var opcDisciplineAvalible=['Natación','Ciclismo','Maraton'];
-
 		var currentUserData={};
 
-
+		var userDataItemForm=[];
 		$.ajax({
 			url:'getCurrentUserData',data:'',type:'get',success:function(data){
 				if (data.session) {
@@ -377,18 +362,14 @@
 							'email':email,
 						}
 					};
-
-
 				}
-
 			}
 		});
-
 		function validateTab(index) {
-        var fv   = $('.formUserRegister').data('formValidation'), // FormValidation instance
+			var fv   = $('.formUserRegister').data('formValidation'),
+         // FormValidation instance
             // The current tab
             $tab = $('.formUserRegister').find('.tab-pane').eq(index);
-
         // Validate the container
         //fv.validate();
         fv.validateContainer($tab);
@@ -398,7 +379,6 @@
             // Do not jump to the target tab
             return false;
         }
-
         return true;
     }
 
@@ -447,39 +427,30 @@
     							opcDisciplineAvalible.splice($(selected).val()-c,1);
     							c++;
     						});
-    						console.log('new opc',opcDisciplineAvalible);
-
+    						//console.log('new opc',opcDisciplineAvalible);
     						addUserItemTable(currentUserItem.fullName,currentUserItem.lastName);
     						$(".discipline").select2('destroy'); 
     						$('.discipline').remove();
     						$('.documentNumberSearch').val("");
     						$('.userDataItem').empty();
     						$('.disciplineItem').empty();
-
     					});
     				}else{
     					$('.userDataItem').append('<i class="fa fa-user"></i> '+user+'  <span class="badge">No disponible </span>');
     				}
     			}else{
     				/*no se encontro unusuario, opcion para agregar*/
-
-
 							//$('.userDataRegister').show();
 							$('.userDataItem').empty();
 							$('.inputDocumentSearch').empty();
-
 							var btnAddNewUser='<button class="newUser pull-right btn btn-primary"><i class="fa fa-plus"></i></button>'
 							$('.inputDocumentSearch').html(btnAddNewUser);
 							$('.newUser').click(function(){
 								$('.userDataRegister').show(200);
 								$('.searchMessage').empty();
-
 								loadFormPlugins(function(){
 									initWizardUserDataRegister();
-								});							
-
-								 
-
+								});														 
 							});
 							$('.searchMessage').html('<div class="col-md-12"><div class="alert alert-warning"> No se encontró ningun usuario. </div></div>');
 							/*if exists discipline select*/
@@ -491,10 +462,8 @@
     }
 
     function initWizardUserDataRegister(){
-
     	$.loadScript('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js',function(){
     		var formRegisterUser =initFormUserRegister();
-
     		formRegisterUser.bootstrapWizard({
     			tabClass: 'nav nav-pills',
     			onTabClick: function(tab, navigation, index) {
@@ -506,20 +475,19 @@
     				if (!isValidTab) {
     					return false;
     				}
-
     				if (index === numTabs) {
                     // We are at the last tab
-
                     // Uncomment the following line to submit the form using the defaultSubmit() method
                     // $('#installationForm').formValidation('defaultSubmit');
-
                     // For testing purpose
-                    alert("Formulario completooo!!!")
-                    var  fullName =$('.fullName').val() ;
+                    //alert("Formulario completooo!!!")
+					/*do something*/
+ 					userDataItemForm.push($(".formUserRegister").serializeArray	());
+ 					console.log(userDataItemForm);
+                     var  fullName =$('.fullName').val() ;
                     var  lastName = $('.lastName').val();
                     addUserItemTable(fullName,lastName);
                 }
-
                 return true;
             },
             onPrevious: function(tab, navigation, index) {
@@ -545,11 +513,10 @@
     function addUserItemTable(fullName,lastName){
     	if (num==1) {$('.tbodyUserAdded').empty();}
     	var op=$('.discipline :selected').text();
-
     	$('.tbodyUserAdded').append('<tr class="trUserAdded"><td>'+num+'</td><td>'+fullName+' '+lastName+'</td><td>'+op+'</td></tr>');
     	num++;
-
     	$(".discipline option[value='"+op+"']").remove();
+    	 
     	$(".formUserRegister")[0].reset();
     }
 
@@ -566,6 +533,7 @@
 
     function setItemValue (objOptionRadios){
     	costtypeSelected= objOptionRadios.parents('tr').find($('.itemQuantity')).data('costtype');
+    	console.log('setItemValue.costtypeSelected='+costtypeSelected);
     	calculateTotalCost(objOptionRadios);
     	idCostSelected=objOptionRadios.parents('tr').find($('.idCost')).val();
     	/*dinamical view by CostType*/
@@ -587,13 +555,10 @@
     function initUserDataForm(){
     	console.log(' enter to function initUserDataForm');
     	var btnSearcStatus='search';
-
-
     	$('.documentNumberSearch').change(function (){
     		console.log("entero to change")
     		var documentNumber =$(this).val();
-    		manageUserByTicket(documentNumber)
-
+    		manageUserByTicket(documentNumber);
     	});
     	$('.optionsRadios').click(function(){
     		var objOptionRadios =$('.optionsRadios');
@@ -602,11 +567,9 @@
 			});
     	$('.inputDocumentSearch').append('<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>');
     	$('.btnAddUserItem').click(function(){
-
     		var documentNumber =$('.inputDocumentSearch').val();
     		manageUserByTicket(documentNumber)
     	});
-
     }
 
     function initTickesEventElements(objItemQuantity,objOptionRadios){
@@ -638,8 +601,6 @@
     	}	
 
     }
-
-
     function getCostByIdData(event,callback){
     	$.ajax({
     		url:'getCostByEvent',
@@ -672,7 +633,6 @@
     				}else{
     					hs += ' <input type="radio" class="form-check-input optionsRadios optionsRadios'+i+'" name="optionsRadios"  value="'+i+'">';
     				}
-
     				hs += '  </label>';
     				hs += '  </div>';
     				hs += ' </td>';
@@ -688,7 +648,6 @@
     				hs +='<input type="hidden" class="idCost" value="'+list[i].idCost+'" />';
     				hs +='</td>';
     				hs += '  </tr>';
-
     				tableTicketDetails.append(hs);
     				objItemQuantity[i]= $('.itemQuantity'+i);
     				objOptionRadios[i]=$('.optionsRadios'+i)
@@ -702,27 +661,23 @@
     		}
     	});
     }
-    var tableTicketDetails=$('.tableTicketDetails');
-    var event =$('.eventSelected').val();
+		    var tableTicketDetails=$('.tableTicketDetails');
+		    var event =$('.eventSelected').val();
 
-    var btnPay=$('.payButton');
-    btnPay.click(function(){
-
-
-    	var birthdate = currentUserData.userData.birthdate.split('-');
-
-    	var ageCurrentUser =calcularEdad(birthdate[2]+'-'+birthdate[1]+'-'+birthdate[0],'-');
+		    var btnPay=$('.payButton');
+		    btnPay.click(function(){
+			var birthdate = currentUserData.userData.birthdate.split('-');
+			var ageCurrentUser =calcularEdad(birthdate[2]+'-'+birthdate[1]+'-'+birthdate[0],'-');
 
     	$('.ageCurrentUser').text(ageCurrentUser);
-
     	var opcRadio=$('.optionsRadios:checked').val();
     	var costtype= $('.optionsRadios:checked').parents('tr').find($('.itemQuantity')).data('costtype');
-    //	console.log(opcRadio); 
-    	var s = $(".tbodyUserAdded .trUserAdded").length;
+		   //	console.log(opcRadio); 
+		    var s = $(".tbodyUserAdded .trUserAdded").length;
 
-    	console.log("costtype:"+costtype); 
-    	if (costtype===2&s===0 ) {
-    		/*usuario adicionales obligatorios*/
+    console.log("costtype:"+costtype); 
+    if (costtype===2&s===0 ) {
+    	/*usuario adicionales obligatorios*/
 
           		//alert("obligatorios!::"+s)
           	}else{
@@ -733,27 +688,36 @@
           });
 
     $(".btnAccept").click(function(){
-					//window.location="payTicket";
-						$(".payButton").empty();
+				 
+					$(".payButton").empty();
 					$(".payButton").append('Procesando <i class="fa fa-spinner fa-spin"></i>');
 					$(".payButton").attr('disabled','disabled');
+					console.log('btnAccept.costtypeSelected'+costtypeSelected);
 					var data={
 						'totalCost':totalCost,
 						'idCost':idCostSelected,
 						'_token':$('.token').val(),
-						'unitCost':unitCost
+						'unitCost':unitCost,
+						'formUser':userDataItemForm,
+						'team':$('.teamEvent').val(),
+						'costtype':costtypeSelected
 
 					};
 					$.ajax({
+						//url:'payTicket',type:'POST',data:data,
 						url:'payTicket',type:'POST',data:data,
 						success:function(data){
 							if (data.submitStatus) {
 								window.location="payTicketSuccess";
 							}else{
 								$(".payButton").removeAttr('disabled');
+									$(".payButton").empty();
+					$(".payButton").append('Procesando <i class="fa fa-send"></i>');
 							}
 						},error:function(){
-						$(".payButton").removeAttr('disabled');
+							$(".payButton").removeAttr('disabled');
+								$(".payButton").empty();
+					$(".payButton").append('Procesando <i class="fa fa-send"></i>');
 
 						}
 					});
