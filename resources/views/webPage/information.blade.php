@@ -48,14 +48,24 @@
                         <p>“HALF TRIATHLON IRONRUNA”, llega para quedarse y convertirse en el mejor evento de triathlon de media distancia del país…  ven  y forma parte de esta primera edición, que te dejará más que satisfecho!!!
                         </p>
                        </div>
-                       <div class="post-img text-center">
-                            <a href="#"><img src="images/map-ironruna.png" alt="image description"></a>
-                             
-                        </div>
-
+                       <!--<div class="post-img text-center"> <a href="#"><img src="images/map-ironruna.png" alt="image description"></a></div>-->
                 </article>
 
             </div>
         </div>
     </div>
+    <section class="haslayout">
+        <div   class="raceMapsCarousel owl-carousel owl-theme">
+            <div class="item">
+                <img src="images/map-ironruna.png"  class="imgSlider"/>
+            </div>
+            <div class="item">
+                <img src="images/slider-images/2.jpg" class="imgSlider"/>
+            </div>
+            <div class="item">
+                <img src="images/slider-images/3.jpg"   class="imgSlider"/>
+            </div>
+
+        </div>
+    </section>
 @endsection

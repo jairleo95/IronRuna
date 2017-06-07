@@ -47,7 +47,18 @@ $(document).ready(function () {
      Theme All Sliders			
      -------------------------------------- */
     console.log('::init owlCarousel2')
- 
+
+    $('.raceMapsCarousel').owlCarousel({
+        animateOut: 'slideOutDown',
+        animateIn: 'flipInX',
+        items:1,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoHeight: true,
+    });
+
  $('.sponsors-small-slider').owlCarousel({
       animateOut: 'slideOutDown',
         animateIn: 'flipInX',

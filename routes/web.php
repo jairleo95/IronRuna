@@ -202,3 +202,7 @@ Route::get('shop', function () {
 });
 
 
+Route::get('sponsor', function () {
+    return view('webPage.sponsor');
+});
+
